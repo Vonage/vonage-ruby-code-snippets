@@ -1,0 +1,12 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    dotenv (2.1.1)
+    nexmo (4.2.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  dotenv (= 2.1.1)
+  nexmo (= 4.2.0)
