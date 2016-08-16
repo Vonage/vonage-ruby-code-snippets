@@ -3,7 +3,7 @@ Dotenv.load
 
 API_KEY = ENV['API_KEY']
 API_SECRET = ENV['API_SECRET']
-VERIFICATION_ID = ENV['VERIFICATION_ID']
+VERIFY_REQUEST_ID = ENV['VERIFY_REQUEST_ID']
 
 require 'nexmo'
 
@@ -12,6 +12,10 @@ client = Nexmo::Client.new(
   secret: API_SECRET
 )
 
-response = client.cancel_verification(VERIFICATION_ID)
+response = client.cancel_verification(VERIFY_REQUEST_ID)
 
-puts response
+if response['status'] == '0'
+  # cancellation was a success
+else
+  puts response['error_text']
+end

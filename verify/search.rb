@@ -3,8 +3,7 @@ Dotenv.load
 
 API_KEY = ENV['API_KEY']
 API_SECRET = ENV['API_SECRET']
-VERIFICATION_ID = ENV['VERIFICATION_ID']
-VERIFICATION_CODE = ENV['VERIFICATION_CODE']
+VERIFY_REQUEST_ID = ENV['VERIFY_REQUEST_ID']
 
 require 'nexmo'
 
@@ -13,6 +12,13 @@ client = Nexmo::Client.new(
   secret: API_SECRET
 )
 
-response = client.get_verification_request(VERIFICATION_ID)
+response = client.get_verification_request(VERIFY_REQUEST_ID)
 
-puts response
+if !response['error_text']
+  #  the current status for
+  # this request, for example:
+  # => IN PROGRESS
+  puts response['status']
+else
+  puts response['error_text']
+end

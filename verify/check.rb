@@ -3,8 +3,8 @@ Dotenv.load
 
 API_KEY = ENV['API_KEY']
 API_SECRET = ENV['API_SECRET']
-VERIFICATION_ID = ENV['VERIFICATION_ID']
-VERIFICATION_CODE = ENV['VERIFICATION_CODE']
+VERIFY_REQUEST_ID = ENV['VERIFY_REQUEST_ID']
+VERIFY_CODE = ENV['VERIFY_CODE']
 
 require 'nexmo'
 
@@ -14,8 +14,16 @@ client = Nexmo::Client.new(
 )
 
 response = client.check_verification(
-  VERIFICATION_ID,
-  code: VERIFICATION_CODE
+  VERIFY_REQUEST_ID,
+  code: VERIFY_CODE
 )
 
-puts response
+# when the check is successful
+if response['status'] == '0'
+  # the cost of this verification
+  puts response['price']
+  # the currency ofthe cost
+  puts response['currency']
+else
+  puts response['error_text']
+end

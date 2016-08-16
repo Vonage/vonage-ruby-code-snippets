@@ -3,7 +3,7 @@ Dotenv.load
 
 API_KEY = ENV['API_KEY']
 API_SECRET = ENV['API_SECRET']
-VERIFICATION_ID = ENV['VERIFICATION_ID']
+VERIFY_REQUEST_ID = ENV['VERIFY_REQUEST_ID']
 
 require 'nexmo'
 
@@ -12,6 +12,11 @@ client = Nexmo::Client.new(
   secret: API_SECRET
 )
 
-response = client.trigger_next_verification_event(VERIFICATION_ID)
+response = client.trigger_next_verification_event(VERIFY_REQUEST_ID)
 
-puts response
+if response['status'] == '0'
+  # triggering next event
+  # was a success
+else
+  puts response['error_text']
+end
