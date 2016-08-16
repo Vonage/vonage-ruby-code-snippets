@@ -3,8 +3,8 @@ Dotenv.load
 
 API_KEY = ENV['API_KEY']
 API_SECRET = ENV['API_SECRET']
-FROM_NUMBER = ENV['FROM_NUMBER']
-TO_NUMBER = ENV['TO_NUMBER']
+VERIFICATION_ID = ENV['VERIFICATION_ID']
+VERIFICATION_CODE = ENV['VERIFICATION_CODE']
 
 require 'nexmo'
 
@@ -13,10 +13,9 @@ client = Nexmo::Client.new(
   secret: API_SECRET
 )
 
-response = client.send_message(
-  from: FROM_NUMBER,
-  to: TO_NUMBER,
-  text: 'Hello from Nexmo!'
+response = client.check_verification(
+  VERIFICATION_ID,
+  code: VERIFICATION_CODE
 )
 
 puts response
