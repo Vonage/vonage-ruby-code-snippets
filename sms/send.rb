@@ -8,7 +8,15 @@ TO_NUMBER = ENV['TO_NUMBER']
 
 require 'nexmo'
 
-client = Nexmo::Client.new(key: API_KEY, secret: API_SECRET)
-response = client.send_message(from: FROM_NUMBER, to: TO_NUMBER, text: 'Hello from Nexmo!')
+client = Nexmo::Client.new(
+  key: API_KEY,
+  secret: API_SECRET
+)
 
-print(response)
+response = client.send_message(
+  from: FROM_NUMBER,
+  to: TO_NUMBER,
+  text: 'Hello from Nexmo!'
+)
+
+puts response
