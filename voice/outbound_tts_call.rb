@@ -1,13 +1,6 @@
-require 'dotenv'
 require 'nexmo'
 
-Dotenv.load
-
-APPLICATION_ID = ENV['APPLICATION_ID']
-PRIVATE_KEY_PATH = ENV['PRIVATE_KEY_PATH']
 PRIVATE_KEY = File.read(PRIVATE_KEY_PATH)
-FROM_NUMBER = ENV['FROM_NUMBER']
-TO_NUMBER = ENV['FROM_NUMBER']
 
 client = Nexmo::Client.new(
   application_id: APPLICATION_ID,
