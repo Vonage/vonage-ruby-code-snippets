@@ -1,9 +1,13 @@
+require 'dotenv'
 require 'faye/websocket'
+require 'json'
 require 'sinatra'
 require 'thin'
-require 'json'
 
-# To run this code sample you need to install: gem install faye-websocket sinatra thin
+Dotenv.load
+
+FROM_NUMBER = ENV['FROM_NUMBER']
+
 # See https://docs.nexmo.com/voice/voice-api/websockets for more instructions
 
 Faye::WebSocket.load_adapter('thin')
@@ -46,13 +50,13 @@ get '/ncco' do
     {
       "action": "connect",
       "eventUrl": [
-        "https://example.com/events"
+        "#{base_url}/events"
       ],
-      "from": "441632960960",
+      "from": "#{FROM_NUMBER}",
       "endpoint": [
         {
           "type": "websocket",
-          "uri": "ws://example.com/socket",
+          "uri": "ws://#{request.env['HTTP_HOST']}/socket",
           "content-type": "audio/l16;rate=16000"
         }
       ]
@@ -62,4 +66,8 @@ end
 
 post '/event' do
   puts params
+end
+
+def base_url
+  @base_url ||= "#{request.env['rack.url_scheme']}://#{request.env['HTTP_HOST']}"
 end
