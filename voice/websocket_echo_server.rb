@@ -50,13 +50,13 @@ get '/ncco' do
     {
       "action": "connect",
       "eventUrl": [
-        "#{base_url}/events"
+        "#{base_url}/event"
       ],
       "from": "#{FROM_NUMBER}",
       "endpoint": [
         {
           "type": "websocket",
-          "uri": "ws://#{request.env['HTTP_HOST']}/socket",
+          "uri": "ws://#{request.env['HTTP_HOST']}",
           "content-type": "audio/l16;rate=16000"
         }
       ]
