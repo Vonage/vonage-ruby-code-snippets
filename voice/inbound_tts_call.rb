@@ -12,7 +12,7 @@ end
 post '/callback' do
   content_type :json
   if params != {}
-    puts params
+    puts JSON.parse(request.body.read)
   end
   {}.to_json
 end
