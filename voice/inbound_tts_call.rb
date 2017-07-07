@@ -11,8 +11,8 @@ end
 
 post '/callback' do
   content_type :json
-  if params != {}
+  if params.any?
     puts JSON.parse(request.body.read)
   end
-  {}.to_json
+  status :ok
 end
