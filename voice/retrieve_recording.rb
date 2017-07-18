@@ -8,11 +8,8 @@ API_SECRET = ENV['API_SECRET']
 APPLICATION_ID = ENV['APPLICATION_ID']
 PRIVATE_KEY = ENV['PRIVATE_KEY']
 
-puts "What is the conversation_uuid?"
+puts "What is the Call's recording_url?"
 
-# The conversation uuid will come from a recording's event url. 
-# It can be conversation_uuid without the leading "CON-"
-# or it can be the last path segment in the recording_url.
 conversation_uuid = gets.chomp
 
 client = Nexmo::Client.new(
