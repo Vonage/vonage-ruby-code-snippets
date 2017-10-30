@@ -3,7 +3,6 @@ Dotenv.load
 
 NEXMO_API_KEY = ENV['NEXMO_API_KEY']
 NEXMO_API_SECRET = ENV['NEXMO_API_SECRET']
-NEXMO_NUMBER = ENV['NEXMO_NUMBER']
 TO_NUMBER = ENV['TO_NUMBER']
 
 require 'nexmo'
@@ -14,7 +13,7 @@ client = Nexmo::Client.new(
 )
 
 client.send_message(
-  from: NEXMO_NUMBER,
+  from: 'Acme Inc',
   to: TO_NUMBER,
-  text: 'Hello from Nexmo!'
+  text: 'A text message sent using the Nexmo SMS API'
 )
