@@ -19,8 +19,14 @@ client = Nexmo::Client.new(
 )
 
 client.create_call(
-  from: { type: 'phone', number: NEXMO_FROM_NUMBER },
-  to: [{ type: 'phone', number: TO_NUMBER }],
+  to: [{
+    type: 'phone',
+    number: TO_NUMBER
+  }],
+  from: {
+    type: 'phone',
+    number: NEXMO_FROM_NUMBER
+  },
   answer_url: [
     'https://developer.nexmo.com/ncco/tts.json'
   ]
