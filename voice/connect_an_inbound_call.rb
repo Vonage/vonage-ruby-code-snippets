@@ -1,11 +1,12 @@
 require 'sinatra'
+require 'sinatra/multi_route'
 require 'json'
 
 before do
   content_type :json
 end
 
-get '/webhooks/answer' do
+route :get, :post, '/webhooks/answer' do
   [{
     action: 'connect',
     endpoint: [{
