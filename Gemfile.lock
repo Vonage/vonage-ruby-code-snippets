@@ -12,7 +12,7 @@ GEM
     jwt (2.1.0)
     multi_json (1.13.1)
     mustermann (1.0.2)
-    nexmo (4.5.0)
+    nexmo (5.0.0)
       jwt
     parallel (1.12.0)
     parser (2.4.0.0)
@@ -60,11 +60,11 @@ PLATFORMS
 DEPENDENCIES
   dotenv (= 2.1.1)
   faye-websocket (= 0.10.7)
-  nexmo (= 4.5.0)
+  nexmo (= 5.0.0)
   rubocop
   sinatra (= 2.0.1)
   sinatra-contrib (= 2.0.1)
   thin (= 1.7.0)
 
 BUNDLED WITH
-   1.16.0
+   1.16.1
