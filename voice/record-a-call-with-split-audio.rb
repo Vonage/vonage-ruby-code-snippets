@@ -1,12 +1,13 @@
-require 'sinatra'
-require 'sinatra/multi_route'
-require 'json'
 require 'dotenv'
 
 Dotenv.load
 
 NEXMO_NUMBER = ENV['NEXMO_NUMBER']
 TO_NUMBER = ENV['RECIPIENT_NUMBER']
+
+require 'sinatra'
+require 'sinatra/multi_route'
+require 'json'
 
 before do
   content_type :json
