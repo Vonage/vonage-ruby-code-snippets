@@ -12,8 +12,9 @@ client = Nexmo::Client.new(
   api_secret: NEXMO_API_SECRET
 )
 
-insight = client.number_insight.basic(
-  number: INSIGHT_NUMBER
+insight = client.number_insight.advanced(
+  number: INSIGHT_NUMBER,
+  callback: 'https//demo.ngrok.io/webhooks/insight'
 )
 
 puts insight.inspect
