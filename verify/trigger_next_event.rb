@@ -17,6 +17,8 @@ response = client.verify.trigger_next_event(VERIFY_REQUEST_ID)
 if response.status == '0'
   # triggering next event
   # was a success
+  # output a message upon success
+  puts 'triggering next event successful'
 else
   puts response.error_text
 end

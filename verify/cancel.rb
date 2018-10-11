@@ -16,6 +16,8 @@ response = client.verify.cancel(VERIFY_REQUEST_ID)
 
 if response.status == '0'
   # cancellation was a success
+  puts 'cancellation successful'
 else
   puts response.error_text
 end
+

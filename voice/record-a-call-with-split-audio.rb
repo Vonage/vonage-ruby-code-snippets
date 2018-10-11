@@ -1,4 +1,5 @@
 require 'dotenv'
+require '../helpers/helpers.rb'
 
 Dotenv.load
 
@@ -11,12 +12,6 @@ require 'json'
 
 before do
   content_type :json
-end
-
-helpers do
-  def parsed_body
-    JSON.parse(request.body.read)
-  end
 end
 
 route :get, :post, '/webhooks/answer' do
