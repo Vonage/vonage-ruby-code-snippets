@@ -1,11 +1,15 @@
 require 'sinatra'
 require 'sinatra/multi_route'
 require 'json'
-require '../helpers/helpers.rb'
-
 
 before do
   content_type :json
+end
+
+helpers do
+  def parsed_body
+    JSON.parse(request.body.read)
+  end
 end
 
 route :get, :post, '/webhooks/answer' do

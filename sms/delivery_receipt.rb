@@ -1,7 +1,16 @@
 require 'sinatra'
 require 'sinatra/multi_route'
 require 'json'
-require '../helpers/helpers'
+
+helpers do
+  def parsed_body
+     json? ? JSON.parse(request.body.read) : {}
+  end
+
+  def json?
+    request.content_type == 'application/json'
+  end
+end
 
 route :get, :post, '/webhooks/delivery-receipt' do
   puts params.merge(parsed_body)

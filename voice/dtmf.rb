@@ -1,7 +1,12 @@
 require 'sinatra'
 require 'sinatra/multi_route'
 require 'json'
-require '../helpers/helpers.rb'
+
+helpers do
+  def parsed_body
+    JSON.parse(request.body.read)
+  end
+end
 
 before do
   content_type :json
