@@ -65,7 +65,7 @@ get '/ncco' do
 end
 
 post '/event' do
-  puts params
+  puts request.body
 end
 
 def base_url
