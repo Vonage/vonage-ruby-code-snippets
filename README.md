@@ -21,6 +21,38 @@ to a real file:
 ```sh
 ruby /path/to/example.rb
 ```
+## Examples
+
+### SMS
+
+| Code Sample                              |
+| ---------------------------------------- |
+| [Send an SMS](sms/send.rb)   |
+| [Receive an SMS](sms/receive.rb) |
+| [Receive a Delivery Receipt](sms/delivery_receipt.rb)     |
+| [Send Unicode SMS](sms/send-unicode-sms.rb) |
+
+### Voice
+
+| Code Sample                              |
+| ---------------------------------------- |
+| [Connect an inbound call](voice/connect_an_inbound_call.rb)      |
+| [Download a recording](voice/download-a-recording.rb) |
+| [Play Text-to-Speech](voice/play-text-to-speech-into-a-call.rb) |
+| [Mute a Call](voice/mute-a-call.rb)   |
+| [Join a Conference Call](voice/join_a_conference_call.rb)   |
+| [Record a call](voice/record_a_call.rb) |
+| [Record a message](voice/record-a-message.rb) |
+| [Retrieve info for a call](voice/retrieve-info-for-a-call.rb) |
+| [Transfer a call](voice/transfer-a-call.rb) |
+
+### Verify
+
+| Code Sample                              |
+| ---------------------------------------- |
+| [Send Phone Verification Code](verify/request.rb) |
+| [Check Phone Verification Code](verify/check.rb) |
+| [Cancel Phone Verification](verify/cancel.rb) |
 
 ## Request an Example
 
