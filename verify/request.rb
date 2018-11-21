@@ -3,7 +3,7 @@ Dotenv.load
 
 NEXMO_API_KEY = ENV['NEXMO_API_KEY']
 NEXMO_API_SECRET = ENV['NEXMO_API_SECRET']
-RECIPIENT_NUMBER = ENV['RECIPIENT_NUMBER']
+NEXMO_TO_NUMBER = ENV['NEXMO_TO_NUMBER']
 
 require 'nexmo'
 
@@ -13,15 +13,12 @@ client = Nexmo::Client.new(
 )
 
 response = client.verify.request(
-  number: RECIPIENT_NUMBER,
-  brand: 'Quickstart'
+  number: NEXMO_TO_NUMBER,
+  brand: 'Acme Inc'
 )
 
-# verification request has
-# been created
 if response.status == '0'
-  # this VERIFY_REQUEST_ID can
-  # be used in the next steps
+  # display the Verify `request_id`
   puts response.request_id
 else
   puts response.error_text
