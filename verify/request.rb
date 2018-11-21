@@ -14,7 +14,7 @@ client = Nexmo::Client.new(
 
 response = client.verify.request(
   number: RECIPIENT_NUMBER,
-  brand: 'Acme Inc'
+  brand: 'AcmeInc'
 )
 
 if response.status == '0'
