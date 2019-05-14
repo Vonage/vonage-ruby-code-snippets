@@ -29,3 +29,11 @@ response = client.numbers.update(
   voiceStatusCallback: VOICE_STATUS_URL,
   moHttpUrl: SMS_CALLBACK_URL
 )
+
+if response.is_a? Nexmo::ClientError
+  puts "Error updating number"
+else
+  puts "Number updated"
+end
+
+puts response.inspect

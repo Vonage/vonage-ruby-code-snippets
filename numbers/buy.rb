@@ -17,3 +17,11 @@ response = client.numbers.buy(
   country: COUNTRY_CODE,
   msisdn: NEXMO_NUMBER
 )
+
+if response.is_a? Nexmo::ClientError
+  puts "Error purchasing number"
+else
+  puts "Number purchased"
+end
+
+puts response.inspect

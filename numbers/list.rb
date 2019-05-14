@@ -13,4 +13,8 @@ client = Nexmo::Client.new(
 
 response = client.numbers.list()
 
-puts response.inspect
+puts "You have #{response.count} numbers:"
+
+response.numbers.each do |number|
+  puts "Tel: #{number.msisdn} Type: #{number.type}"
+end

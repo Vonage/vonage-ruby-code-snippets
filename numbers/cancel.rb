@@ -17,3 +17,11 @@ response = client.numbers.cancel(
   country: COUNTRY_CODE,
   msisdn: NEXMO_NUMBER
 )
+
+if response.is_a? Nexmo::ClientError
+  puts "Error cancelling number"
+else
+  puts "Number cancelled"
+end
+
+puts response.inspect
