@@ -26,7 +26,7 @@ response = client.numbers.search(
   search_pattern: NUMBER_SEARCH_PATTERN
 )
 
-puts "Your search returned #{response.count} numbers available for purchase:"
+puts "Your search returned #{response.numbers.length} of the #{response.count} matching numbers available for purchase:"
 
 response.numbers.each do |number|
   puts "Tel: #{number.msisdn} Cost: #{number.cost}"
