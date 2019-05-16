@@ -19,21 +19,18 @@ client = Nexmo::Client.new(
   api_secret: NEXMO_API_SECRET
 )
 
-response = client.numbers.update(
-  country: COUNTRY_CODE,
-  msisdn: NEXMO_NUMBER,
-  messagesCallbackType: 'app',
-  messagesCallbackValue: MESSAGES_APPLICATION_ID,
-  voiceCallbackType: VOICE_CALLBACK_TYPE,
-  voiceCallbackValue: VOICE_CALLBACK_VALUE,
-  voiceStatusCallback: VOICE_STATUS_URL,
-  moHttpUrl: SMS_CALLBACK_URL
-)
-
-if response.is_a? Nexmo::ClientError
-  puts "Error updating number"
-else
+begin
+  response = client.numbers.update(
+    country: COUNTRY_CODE,
+    msisdn: NEXMO_NUMBER,
+    messagesCallbackType: 'app',
+    messagesCallbackValue: MESSAGES_APPLICATION_ID,
+    voiceCallbackType: VOICE_CALLBACK_TYPE,
+    voiceCallbackValue: VOICE_CALLBACK_VALUE,
+    voiceStatusCallback: VOICE_STATUS_URL,
+    moHttpUrl: SMS_CALLBACK_URL
+  )
   puts "Number updated"
+rescue
+  puts "Error updating number"
 end
-
-puts response.inspect

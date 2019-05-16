@@ -13,15 +13,12 @@ client = Nexmo::Client.new(
   api_secret: NEXMO_API_SECRET
 )
 
-response = client.numbers.cancel(
-  country: COUNTRY_CODE,
-  msisdn: NEXMO_NUMBER
-)
-
-if response.is_a? Nexmo::ClientError
-  puts "Error cancelling number"
-else
+begin
+  response = client.numbers.cancel(
+    country: COUNTRY_CODE,
+    msisdn: NEXMO_NUMBER
+  )
   puts "Number cancelled"
+rescue
+  puts "Error cancelling number"
 end
-
-puts response.inspect

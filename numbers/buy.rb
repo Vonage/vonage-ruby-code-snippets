@@ -13,15 +13,12 @@ client = Nexmo::Client.new(
   api_secret: NEXMO_API_SECRET
 )
 
-response = client.numbers.buy(
-  country: COUNTRY_CODE,
-  msisdn: NEXMO_NUMBER
-)
-
-if response.is_a? Nexmo::ClientError
-  puts "Error purchasing number"
-else
+begin
+  response = client.numbers.buy(
+    country: COUNTRY_CODE,
+    msisdn: NEXMO_NUMBER
+  )
   puts "Number purchased"
+rescue
+  puts "Error purchasing number"
 end
-
-puts response.inspect
