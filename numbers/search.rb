@@ -17,17 +17,21 @@ client = Nexmo::Client.new(
   api_secret: NEXMO_API_SECRET
 )
 
-response = client.numbers.search(
-  country: COUNTRY_CODE,
-  msisdn: NEXMO_NUMBER,
-  type: NEXMO_NUMBER_TYPE,
-  features: NEXMO_NUMBER_FEATURES,
-  pattern: NUMBER_SEARCH_CRITERIA,
-  search_pattern: NUMBER_SEARCH_PATTERN
-)
+begin
+  response = client.numbers.search(
+    country: COUNTRY_CODE,
+    msisdn: NEXMO_NUMBER,
+    type: NEXMO_NUMBER_TYPE,
+    features: NEXMO_NUMBER_FEATURES,
+    pattern: NUMBER_SEARCH_CRITERIA,
+    search_pattern: NUMBER_SEARCH_PATTERN
+  )
 
-puts "Your search returned #{response.numbers.length} of the #{response.count} matching numbers available for purchase:"
+  puts "Your search returned #{response.numbers.length} of the #{response.count} matching numbers available for purchase:"
 
-response.numbers.each do |number|
-  puts "Tel: #{number.msisdn} Cost: #{number.cost}"
+  response.numbers.each do |number|
+    puts "Tel: #{number.msisdn} Cost: #{number.cost}"
+  end
+rescue
+  puts "Error searching numbers"
 end
