@@ -11,4 +11,4 @@ client = Nexmo::Client.new(
   api_secret: NEXMO_API_SECRET
 )
 
-client.account.balance
+puts "#{client.account.balance.value.round(2)} EUR"
