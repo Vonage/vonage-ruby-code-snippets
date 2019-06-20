@@ -12,6 +12,5 @@ client = Nexmo::Client.new(
 )
 
 result = client.secrets.list
-formatted_result = result.to_h[:_embedded].to_h[:secrets].to_a[0].to_h
-
-puts "ID: #{formatted_result[:id]} created on #{formatted_result[:created_at]}"
+result_hash = result._embedded.secrets[0].to_h
+puts "ID: #{result_hash[:id]} created on #{result_hash[:created_at]}"
