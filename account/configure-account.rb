@@ -13,6 +13,10 @@ client = Nexmo::Client.new(
   api_secret: NEXMO_API_SECRET
 )
 
-client.account.update(
+result = client.account.update(
     moHttpUrl: SMS_CALLBACK_URL
 )
+
+result.to_h.each do |key, value|
+    puts "#{key}: #{value}"
+end
