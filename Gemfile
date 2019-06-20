@@ -8,3 +8,5 @@ gem 'sinatra-contrib', '2.0.3'
 gem 'thin', '1.7.0'
 
 gem 'rubocop', require: false
+
+gem "byebug", "~> 11.0"
