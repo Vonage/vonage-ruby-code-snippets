@@ -8,6 +8,7 @@ GEM
       tzinfo (~> 1.1)
     ast (2.4.0)
     backports (3.11.3)
+    byebug (11.0.1)
     concurrent-ruby (1.0.5)
     daemons (1.2.6)
     dotenv (2.1.1)
@@ -71,6 +72,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  byebug (~> 11.0)
   dotenv (= 2.1.1)
   faye-websocket (= 0.10.7)
   nexmo (= 5.3.0)
