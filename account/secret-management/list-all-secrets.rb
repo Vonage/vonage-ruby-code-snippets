@@ -1,4 +1,5 @@
 require 'dotenv'
+
 Dotenv.load
 
 NEXMO_API_KEY = ENV['NEXMO_API_KEY']
@@ -13,4 +14,5 @@ client = Nexmo::Client.new(
 
 result = client.secrets.list
 result_hash = result._embedded.secrets[0].to_h
+
 puts "ID: #{result_hash[:id]} created on #{result_hash[:created_at]}"
