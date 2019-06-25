@@ -21,10 +21,8 @@ client.calls.create(
         type: 'phone',
         number: NEXMO_NUMBER
     },
-    answer_url: ['ncco' => 
-        [
+    ncco: [
             'action' => 'talk',
             'text' => 'This is a text to speech call from Nexmo'
         ] 
-    ]
 )
