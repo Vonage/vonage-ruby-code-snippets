@@ -13,6 +13,7 @@ client = Nexmo::Client.new(
 )
 
 result = client.secrets.list
-result_hash = result._embedded.secrets[0].to_h
 
-puts "ID: #{result_hash[:id]} created on #{result_hash[:created_at]}"
+result._embedded.secrets.each do |secret|
+    puts "ID: #{secret.id} created on #{secret.created_at}"
+end
