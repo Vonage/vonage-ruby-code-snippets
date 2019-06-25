@@ -13,4 +13,7 @@ client = Nexmo::Client.new(
     api_secret: NEXMO_API_SECRET
 )
 
-client.secrets.get(SECRET_ID)
+result = client.secrets.get(SECRET_ID)
+result_hash = result._embedded.secrets[0].to_h
+
+puts "ID: #{result_hash[:id]} created on #{result_hash[:created_at]}"
