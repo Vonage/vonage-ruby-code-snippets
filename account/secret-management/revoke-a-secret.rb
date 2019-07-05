@@ -19,7 +19,7 @@ client = Nexmo::Client.new(
 client.secrets.revoke(NEXMO_SECRET_ID)
 begin
   response = client.secrets.revoke(NEXMO_SECRET_ID)
-  puts 'Secret Created Successfully' if response.to_s == 'no_content'
+  puts 'OK' if response.to_s == 'no_content'
 rescue StandardError => e
   puts e.message
 end
