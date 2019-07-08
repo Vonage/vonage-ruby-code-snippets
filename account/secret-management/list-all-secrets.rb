@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'dotenv'
 
 Dotenv.load
@@ -8,12 +10,12 @@ NEXMO_API_SECRET = ENV['NEXMO_API_SECRET']
 require 'nexmo'
 
 client = Nexmo::Client.new(
-    api_key: NEXMO_API_KEY,
-    api_secret: NEXMO_API_SECRET
+  api_key: NEXMO_API_KEY,
+  api_secret: NEXMO_API_SECRET
 )
 
 result = client.secrets.list
 
 result._embedded.secrets.each do |secret|
-    puts "ID: #{secret.id} created on #{secret.created_at}"
+  puts "ID: #{secret.id} created on #{secret.created_at}"
 end

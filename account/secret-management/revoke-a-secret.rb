@@ -16,10 +16,9 @@ client = Nexmo::Client.new(
   api_secret: NEXMO_API_SECRET
 )
 
-client.secrets.revoke(NEXMO_SECRET_ID)
 begin
   response = client.secrets.revoke(NEXMO_SECRET_ID)
-  puts 'OK' if response.to_s == 'no_content'
+  puts 'OK' if response == :no_content
 rescue StandardError => e
   puts e.message
 end
