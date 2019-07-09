@@ -8,7 +8,7 @@ NEXMO_API_SECRET = ENV['NEXMO_API_SECRET']
 NEXMO_REDACT_ID = ENV['REDACT_ID']
 
 NEXMO_REDACT_TYPE = ARGV[0]
-if PRODUCT.empty?
+if NEXMO_REDACT_TYPE.empty?
   puts 'Please supply the product type'
   exit
 end
