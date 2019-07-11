@@ -17,7 +17,7 @@ route :get, :post, '/webhooks/answer' do
     [
       'action' => 'notify',
       'payload' => ['foo' => 'bar'],
-      'eventUrl' => ["#{request.base_url}/webhooks/notifications"]
+      'eventUrl' => ["#{request.base_url}/webhooks/notification"]
     ],
     [
       'action' => 'talk',
@@ -26,7 +26,7 @@ route :get, :post, '/webhooks/answer' do
   ].to_json
 end
 
-route :get, :post, '/webhooks/notifications' do
+route :get, :post, '/webhooks/notification' do
   puts params
   [
     [
