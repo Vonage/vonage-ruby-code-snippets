@@ -4,8 +4,6 @@ require 'sinatra'
 require 'sinatra/multi_route'
 require 'json'
 
-YOUR_URL = 'put your externally accessible url here'
-
 before do
   content_type :json
 end
@@ -19,7 +17,7 @@ route :get, :post, '/webhooks/answer' do
     [
       'action' => 'notify',
       'payload' => ['foo' => 'bar'],
-      'eventUrl' => ["#{YOUR_URL}/webhooks/notifications"]
+      'eventUrl' => ["#{request.base_url}/webhooks/notifications"]
     ],
     [
       'action' => 'talk',
@@ -38,7 +36,7 @@ route :get, :post, '/webhooks/notifications' do
   ].to_json
 end
 
-route :get, :post, 'webhooks/event' do
+route :get, :post, '/webhooks/event' do
   puts params
   halt 204
 end
