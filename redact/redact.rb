@@ -7,13 +7,13 @@ Dotenv.load
 NEXMO_API_KEY = ENV['NEXMO_API_KEY']
 NEXMO_API_SECRET = ENV['NEXMO_API_SECRET']
 
-NEXMO_REDACT_ID = ARGV[0]
+NEXMO_REDACT_ID = ARGV[0] || ''
 if NEXMO_REDACT_ID.empty?
   puts 'Please supply the product ID'
   exit
 end
 
-NEXMO_REDACT_TYPE = ARGV[1]
+NEXMO_REDACT_TYPE = ARGV[1] || ''
 if NEXMO_REDACT_TYPE.empty?
   puts 'Please supply the product type'
   exit
