@@ -23,7 +23,7 @@ GEM
     minitest (5.11.3)
     multi_json (1.13.1)
     mustermann (1.0.2)
-    nexmo (5.8.0)
+    nexmo (5.9.0)
       jwt (~> 2)
     parallel (1.12.1)
     parser (2.5.1.2)
@@ -75,7 +75,7 @@ DEPENDENCIES
   byebug (~> 11.0)
   dotenv (= 2.1.1)
   faye-websocket (= 0.10.7)
-  nexmo (= 5.8.0)
+  nexmo (= 5.9.0)
   rubocop
   sinatra (= 2.0.3)
   sinatra-contrib (= 2.0.3)
