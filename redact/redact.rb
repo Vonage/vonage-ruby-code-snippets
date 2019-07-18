@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'dotenv'
-require 'byebug'
+
 Dotenv.load
 
 NEXMO_API_KEY = ENV['NEXMO_API_KEY']
@@ -18,8 +18,6 @@ if NEXMO_REDACT_TYPE.empty?
   puts 'Please supply the product type'
   exit
 end
-
-byebug
 
 require 'nexmo'
 
