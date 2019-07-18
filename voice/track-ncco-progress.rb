@@ -16,7 +16,7 @@ route :get, :post, '/webhooks/answer' do
     },
     {
       'action' => 'notify',
-      'payload' => ['foo' => 'bar'],
+      'payload' => {'foo' => 'bar'},
       'eventUrl' => ["#{request.base_url}/webhooks/notification"]
     },
     {
