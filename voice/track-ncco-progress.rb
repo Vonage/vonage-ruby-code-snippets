@@ -2,7 +2,9 @@
 
 require 'sinatra'
 require 'sinatra/multi_route'
-require 'json'
+require 'rack/contrib'
+
+use Rack::PostBodyContentTypeParser
 
 before do
   content_type :json
