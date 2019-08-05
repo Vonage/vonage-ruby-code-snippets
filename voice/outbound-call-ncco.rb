@@ -15,8 +15,8 @@ client = Nexmo::Client.new(
   private_key: File.read(NEXMO_APPLICATION_PRIVATE_KEY_PATH)
 )
 
-TO_NUMBER =
-NEXMO_NUMBER =
+TO_NUMBER = ENV['TO_NUMBER']
+NEXMO_NUMBER = ENV['NEXMO_NUMBER']
 
 response = client.calls.create(
   to: [{
