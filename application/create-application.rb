@@ -32,7 +32,7 @@ begin
       }
     }
   )
-  puts 'Application Created Successfully' if response.id
+  puts "Application #{response.id} Created Successfully" if response.id
 rescue StandardError => e
   puts e.message
 end
