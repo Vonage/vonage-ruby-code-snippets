@@ -1,6 +1,4 @@
-require 'dotenv'
-
-Dotenv.load
+require 'dotenv/load'
 
 NEXMO_NUMBER = ENV['NEXMO_NUMBER']
 TO_NUMBER = ENV['RECIPIENT_NUMBER']
