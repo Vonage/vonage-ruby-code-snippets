@@ -6,8 +6,8 @@ NEXMO_API_SECRET = ENV['NEXMO_API_SECRET']
 
 REQUEST_ID = ARGV[0]
 if REQUEST_ID.empty?
-    puts 'Please supply the `request_id'
-    exit
+  puts 'Please supply the `request_id'
+  exit
 end
 
 require 'nexmo'
