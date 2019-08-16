@@ -1,6 +1,4 @@
-require 'dotenv'
-
-Dotenv.load
+require 'dotenv/load'
 
 NEXMO_API_KEY = ENV['NEXMO_API_KEY']
 NEXMO_API_SECRET = ENV['NEXMO_API_SECRET']

@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 
 require 'json'
-require 'dotenv'
-
-Dotenv.load
+require 'dotenv/load'
 
 NEXMO_APPLICATION_ID = ENV['NEXMO_APPLICATION_ID']
 NEXMO_APPLICATION_PRIVATE_KEY_PATH = ENV['NEXMO_APPLICATION_PRIVATE_KEY_PATH']
