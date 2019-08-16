@@ -13,23 +13,23 @@ helpers do
 end
 
 route :get, :post, '/webhooks/answer' do
-    [
-        {
-            "action": "talk",
-            "text": "Please leave a message after the tone, then press #. We will get back to you as soon as we can"
-        },
-        {
-            "action": "record",
-            "eventUrl": ["#{request.base_url}/webhooks/recordings"],
-            "endOnSilence": "3",
-            "endOnKey": "#",
-            "beepStart": "true"
-        },
-        {
-            "action": "talk",
-            "text": "Thank you for your message. Goodbye"
-        }
-      ].to_json
+  [
+    {
+      "action": "talk",
+      "text": "Please leave a message after the tone, then press #. We will get back to you as soon as we can"
+    },
+    {
+      "action": "record",
+      "eventUrl": ["#{request.base_url}/webhooks/recordings"],
+      "endOnSilence": "3",
+      "endOnKey": "#",
+      "beepStart": "true"
+    },
+    {
+      "action": "talk",
+      "text": "Thank you for your message. Goodbye"
+    }
+  ].to_json
 end
 
 route :get, :post, '/webhooks/recordings' do

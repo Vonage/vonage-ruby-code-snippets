@@ -9,8 +9,8 @@ require 'nexmo'
 require 'time'
 
 client = Nexmo::Client.new(
-    application_id: NEXMO_APPLICATION_ID,
-    private_key: File.read(NEXMO_APPLICATION_PRIVATE_KEY_PATH)
+  application_id: NEXMO_APPLICATION_ID,
+  private_key: File.read(NEXMO_APPLICATION_PRIVATE_KEY_PATH)
 )
 
 now = Time.now
@@ -20,5 +20,5 @@ response = client.calls.list({date_start: yesterday.utc.iso8601, date_end: now.u
 
 calls = response._embedded.calls
 calls.each do |call|
-    puts call.inspect
+  puts call.inspect
 end

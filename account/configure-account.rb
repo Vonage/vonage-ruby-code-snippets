@@ -14,9 +14,9 @@ client = Nexmo::Client.new(
 )
 
 result = client.account.update(
-    moHttpUrl: SMS_CALLBACK_URL
+  moHttpUrl: SMS_CALLBACK_URL
 )
 
 result.to_h.each do |key, value|
-    puts "#{key}: #{value}"
+  puts "#{key}: #{value}"
 end
