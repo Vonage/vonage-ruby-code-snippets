@@ -3,7 +3,7 @@ require 'dotenv'
 Dotenv.load
 
 NEXMO_NUMBER = ENV['NEXMO_NUMBER']
-TO_NUMBER = ENV['RECIPIENT_NUMBER']
+TO_NUMBER = ENV['TO_NUMBER']
 
 require 'sinatra'
 require 'sinatra/multi_route'
