@@ -1,15 +1,12 @@
 # frozen_string_literal: true
 
-require 'dotenv'
-
-Dotenv.load
+require 'dotenv/load'
+require 'nexmo'
 
 NEXMO_APPLICATION_ID = ENV['NEXMO_APPLICATION_ID']
 NEXMO_APPLICATION_PRIVATE_KEY_PATH = ENV['NEXMO_APPLICATION_PRIVATE_KEY_PATH']
 RECIPIENT_NUMBER = ENV['RECIPIENT_NUMBER']
 NEXMO_NUMBER = ENV['NEXMO_NUMBER']
-
-require 'nexmo'
 
 client = Nexmo::Client.new(
   application_id: NEXMO_APPLICATION_ID,

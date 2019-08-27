@@ -1,12 +1,9 @@
-require 'dotenv'
-
-Dotenv.load
+require 'dotenv/load'
+require 'nexmo'
+require 'time'
 
 NEXMO_APPLICATION_ID = ENV['NEXMO_APPLICATION_ID']
 NEXMO_APPLICATION_PRIVATE_KEY_PATH = ENV['NEXMO_APPLICATION_PRIVATE_KEY_PATH']
-
-require 'nexmo'
-require 'time'
 
 client = Nexmo::Client.new(
   application_id: NEXMO_APPLICATION_ID,

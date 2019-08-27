@@ -1,10 +1,8 @@
-require 'dotenv'
+require 'dotenv/load'
 require 'faye/websocket'
 require 'json'
 require 'sinatra'
 require 'thin'
-
-Dotenv.load
 
 NEXMO_NUMBER = ENV['NEXMO_NUMBER']
 
