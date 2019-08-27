@@ -3,7 +3,7 @@ require 'dotenv'
 Dotenv.load
 
 NEXMO_NUMBER = ENV['NEXMO_NUMBER']
-TO_NUMBER = ENV['RECIPIENT_NUMBER']
+RECIPIENT_NUMBER = ENV['RECIPIENT_NUMBER']
 
 require 'sinatra'
 require 'sinatra/multi_route'
@@ -31,7 +31,7 @@ route :get, :post, '/webhooks/answer' do
       "endpoint": [
         {
           "type": "phone",
-          "number": TO_NUMBER
+          "number": RECIPIENT_NUMBER
         }
       ]
     }
