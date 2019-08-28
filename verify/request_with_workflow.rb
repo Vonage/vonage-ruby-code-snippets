@@ -5,7 +5,7 @@ require 'nexmo'
 
 NEXMO_API_KEY = ENV['NEXMO_API_KEY']
 NEXMO_API_SECRET = ENV['NEXMO_API_SECRET']
-RECIPIENT_NUMBER = ENV['RECIPIENT_NUMBER']
+TO_NUMBER = ENV['TO_NUMBER']
 
 WORKFLOW_ID = ARGV[0]
 if WORKFLOW_ID.empty?
@@ -19,7 +19,7 @@ client = Nexmo::Client.new(
 )
 
 response = client.verify.request(
-  number: RECIPIENT_NUMBER,
+  number: TO_NUMBER,
   brand: 'AcmeInc',
   workflow_id: WORKFLOW_ID
 )

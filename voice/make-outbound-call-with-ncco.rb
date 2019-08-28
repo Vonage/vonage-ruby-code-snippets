@@ -5,7 +5,7 @@ require 'nexmo'
 
 NEXMO_APPLICATION_ID = ENV['NEXMO_APPLICATION_ID']
 NEXMO_APPLICATION_PRIVATE_KEY_PATH = ENV['NEXMO_APPLICATION_PRIVATE_KEY_PATH']
-RECIPIENT_NUMBER = ENV['RECIPIENT_NUMBER']
+TO_NUMBER = ENV['TO_NUMBER']
 NEXMO_NUMBER = ENV['NEXMO_NUMBER']
 
 client = Nexmo::Client.new(
@@ -16,7 +16,7 @@ client = Nexmo::Client.new(
 client.calls.create(
   to: [{
     type: 'phone',
-    number: RECIPIENT_NUMBER
+    number: TO_NUMBER
   }],
   from: {
     type: 'phone',
