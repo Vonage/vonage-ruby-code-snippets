@@ -6,6 +6,8 @@ The purpose of the quickstart guide is to provide simple examples focused
 on one goal. For example, sending an SMS, handling an incoming SMS webhook,
 making a Text to Speech call.
 
+*Note: The code snippets inside this repository are best viewed within the context of the [Nexmo Developer Platform](https://developer.nexmo.com). Within the platform each snippet is shown with its dependency requirements and installation instructions. For example, see the [Connect Callers into a Conference Ruby Code Snippet](https://developer.nexmo.com/voice/voice-api/code-snippets/connect-callers-into-a-conference/ruby).*
+
 ## Setup
 
 To use this sample you will first need a [Nexmo account][sign-up]. Then rename
