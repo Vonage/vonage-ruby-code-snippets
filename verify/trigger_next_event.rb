@@ -17,8 +17,6 @@ client = Nexmo::Client.new(
 
 response = client.verify.trigger_next_event(REQUEST_ID)
 
-if response.status == '0'
-  puts 'Next event triggered'
-else
+if response
   puts response.error_text
 end

@@ -17,10 +17,8 @@ client = Nexmo::Client.new(
 
 response = client.verify.search(request_id: REQUEST_ID)
 
-if !response.error_text
+if response
   # The current status of this request, for example:
   # => IN PROGRESS
   puts response.status
-else
-  puts response.error_text
 end

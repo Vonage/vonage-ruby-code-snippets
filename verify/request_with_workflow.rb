@@ -24,9 +24,7 @@ response = client.verify.request(
   workflow_id: WORKFLOW_ID
 )
 
-if response.status == '0'
+if response
   # display the Verify `request_id`
   puts response.request_id
-else
-  puts response.error_text
 end
