@@ -11,6 +11,6 @@ client = Nexmo::Client.new(
 )
     
 AUDIO_URL = 'https://nexmo-community.github.io/ncco-examples/assets/voice_api_audio_streaming.mp3'
-response = client.calls.stream.start(UUID, stream_url: [AUDIO_URL])
+response = client.voice.stream.start(UUID, stream_url: [AUDIO_URL])
 
 puts response.inspect

@@ -13,6 +13,6 @@ client = Nexmo::Client.new(
 
 ncco = {"type": "ncco", "url": ["https://developer.nexmo.com/ncco/transfer.json"]}
 
-response = client.calls.transfer(UUID, destination: ncco)
+response = client.voice.transfer(UUID, destination: ncco)
 
 puts response.inspect

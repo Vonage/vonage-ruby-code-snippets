@@ -11,6 +11,6 @@ client = Nexmo::Client.new(
 )
 
 DIGITS = '332393'
-response = client.calls.dtmf.send(UUID, digits: DIGITS)
+response = client.voice.dtmf.send(UUID, digits: DIGITS)
 
 puts response.inspect

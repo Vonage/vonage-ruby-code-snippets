@@ -10,8 +10,8 @@ client = Nexmo::Client.new(
   private_key: File.read(NEXMO_APPLICATION_PRIVATE_KEY_PATH)
 )
 
-client.calls.earmuff(UUID)
+client.voice.earmuff(UUID)
 
 sleep(5)
 
-client.calls.unearmuff(UUID)
+client.voice.unearmuff(UUID)

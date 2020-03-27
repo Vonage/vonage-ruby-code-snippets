@@ -10,6 +10,6 @@ client = Nexmo::Client.new(
   private_key: File.read(NEXMO_APPLICATION_PRIVATE_KEY_PATH)
 )
 
-response = client.calls.get(UUID)
+response = client.voice.get(UUID)
 
 puts response.inspect

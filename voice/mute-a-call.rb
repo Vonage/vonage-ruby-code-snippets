@@ -10,8 +10,8 @@ client = Nexmo::Client.new(
   private_key: File.read(NEXMO_APPLICATION_PRIVATE_KEY_PATH)
 )
 
-client.calls.mute(UUID)
+client.voice.mute(UUID)
 
 sleep(5)
 
-client.calls.unmute(UUID)
+client.voice.unmute(UUID)
