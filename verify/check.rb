@@ -27,11 +27,9 @@ response = client.verify.check(
 )
 
 # when the check is successful
-if response.status == '0'
+if response
   # the cost of this verification
   puts response.price
   # the currency ofthe cost
   puts response.currency
-else
-  puts response.error_text
 end

@@ -16,9 +16,3 @@ client = Nexmo::Client.new(
 )
 
 response = client.verify.cancel(REQUEST_ID)
-
-if response.status == '0'
-  puts 'Verification cancelled.'
-else
-  puts response.error_text
-end
