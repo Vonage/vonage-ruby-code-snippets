@@ -15,7 +15,7 @@ client = Nexmo::Client.new(
   private_key: File.read(NEXMO_APPLICATION_PRIVATE_KEY_PATH)
 )
 
-response = client.calls.create(
+response = client.voice.create(
   to: [{
     type: 'phone',
     number: TO_NUMBER

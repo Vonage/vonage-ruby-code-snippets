@@ -10,4 +10,4 @@ client = Nexmo::Client.new(
   private_key: File.read(NEXMO_APPLICATION_PRIVATE_KEY_PATH)
 )
 
-response = client.calls.talk.start(UUID, text: 'Hello from Nexmo', voice_name: "Kimberly")
+response = client.voice.talk.start(UUID, text: 'Hello from Nexmo', voice_name: "Kimberly")

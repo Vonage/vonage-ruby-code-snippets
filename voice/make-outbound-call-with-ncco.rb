@@ -13,7 +13,7 @@ client = Nexmo::Client.new(
   private_key: File.read(NEXMO_APPLICATION_PRIVATE_KEY_PATH)
 )
 
-client.calls.create(
+client.voice.create(
   to: [{
     type: 'phone',
     number: TO_NUMBER

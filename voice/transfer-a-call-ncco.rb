@@ -21,6 +21,6 @@ ncco = {
   ]
 }
 
-response = client.calls.transfer(UUID, destination: ncco)
+response = client.voice.transfer(UUID, destination: ncco)
 
 puts response.inspect
