@@ -14,7 +14,7 @@ client = Nexmo::Client.new(
 )
 
 begin
-  response = client.applications_v2.delete(NEXMO_APPLICATION_ID)
+  response = client.applications.delete(NEXMO_APPLICATION_ID)
   puts 'OK' if response == :no_content
 rescue StandardError => e
   puts e.message

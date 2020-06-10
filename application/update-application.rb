@@ -14,7 +14,7 @@ client = Nexmo::Client.new(
 )
 
 begin
-  response = client.applications_v2.update(
+  response = client.applications.update(
     NEXMO_APPLICATION_ID,
     id: NEXMO_APPLICATION_ID,
     name: 'Ruby Update App',

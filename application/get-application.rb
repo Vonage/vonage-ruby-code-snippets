@@ -14,7 +14,7 @@ client = Nexmo::Client.new(
 )
 
 begin
-  response = client.applications_v2.get(NEXMO_APPLICATION_ID)
+  response = client.applications.get(NEXMO_APPLICATION_ID)
   puts "#{response.name}: #{response.id}"
 rescue StandardError => e
   puts e.message
