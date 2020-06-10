@@ -12,7 +12,7 @@ client = Nexmo::Client.new(
 )
 
 begin
-  response = client.applications_v2.create(
+  response = client.applications.create(
     name: 'Code Example App',
     capabilities: {
       'messages': {

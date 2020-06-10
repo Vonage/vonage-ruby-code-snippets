@@ -11,7 +11,7 @@ client = Nexmo::Client.new(
   api_secret: NEXMO_API_SECRET
 )
 
-response = client.applications_v2.list
+response = client.applications.list
 
 response._embedded.applications.each do |application|
   puts "#{application.name}: #{application.id}"
