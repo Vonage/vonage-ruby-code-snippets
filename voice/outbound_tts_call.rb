@@ -25,7 +25,7 @@ response = client.voice.create(
     number: NEXMO_NUMBER
   },
   answer_url: [
-    'https://github.com/nexmo-community/ncco-examples/blob/gh-pages/text-to-speech.json'
+    'https://raw.githubusercontent.com/nexmo-community/ncco-examples/gh-pages/text-to-speech.json'
   ]
 )
 
