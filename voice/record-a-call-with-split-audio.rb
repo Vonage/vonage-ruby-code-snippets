@@ -1,6 +1,6 @@
 require 'dotenv/load'
 
-NEXMO_NUMBER = ENV['NEXMO_NUMBER']
+VONAGE_NUMBER = ENV['VONAGE_NUMBER']
 TO_NUMBER = ENV['TO_NUMBER']
 
 require 'sinatra'
@@ -27,7 +27,7 @@ route :get, :post, '/webhooks/answer' do
     },
     {
       "action": "connect",
-      "from": NEXMO_NUMBER,
+      "from": VONAGE_NUMBER,
       "endpoint": [
         {
           "type": "phone",

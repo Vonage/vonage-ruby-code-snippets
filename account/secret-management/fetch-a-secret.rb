@@ -1,17 +1,17 @@
 # frozen_string_literal: true
 
 require 'dotenv/load'
-require 'nexmo'
+require 'vonage'
 
-NEXMO_API_KEY = ENV['NEXMO_API_KEY']
-NEXMO_API_SECRET = ENV['NEXMO_API_SECRET']
+VONAGE_API_KEY = ENV['VONAGE_API_KEY']
+VONAGE_API_SECRET = ENV['VONAGE_API_SECRET']
 
-NEXMO_SECRET_ID = ENV['NEXMO_SECRET_ID']
+VONAGE_SECRET_ID = ENV['VONAGE_SECRET_ID']
 
-client = Nexmo::Client.new(
-  api_key: NEXMO_API_KEY,
-  api_secret: NEXMO_API_SECRET
+client = Vonage::Client.new(
+  api_key: VONAGE_API_KEY,
+  api_secret: VONAGE_API_SECRET
 )
-result = client.secrets.get(NEXMO_SECRET_ID)
+result = client.secrets.get(VONAGE_SECRET_ID)
 
 puts "ID: #{result.id} created on #{result.created_at}"

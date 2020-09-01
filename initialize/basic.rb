@@ -1,6 +1,6 @@
-require 'nexmo'
+require 'vonage'
 
-client = Nexmo::Client.new(
-  api_key: NEXMO_API_KEY,
-  api_secret: NEXMO_API_SECRET
+client = Vonage::Client.new(
+  api_key: VONAGE_API_KEY,
+  api_secret: VONAGE_API_SECRET
 )
