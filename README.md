@@ -28,7 +28,7 @@ ruby /path/to/example.rb
 
 ## Request an Example
 
-Please [raise an issue](https://github.com/Nexmo/nexmo-ruby-code-snippets/issues) to request an example that isn't present within
+Please [raise an issue](https://github.com/Vonage/vonage-ruby-code-snippets/issues) to request an example that isn't present within
 the quickstart. Pull requests will be gratefully received.
 
 ## License
