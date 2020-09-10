@@ -1,6 +1,6 @@
 # Vonage APIs Quickstart Examples for Ruby
 
-<img src="https://developer.nexmo.com/assets/images/Vonage_Nexmo.svg" height="48px" alt="Nexmo is now known as Vonage" />
+<img src=" https://developer.nexmo.com/images/logos/vbc-logo.svg" height="48px" alt="Vonage APIs" />
 
 Quickstarts also available for: [Java](https://github.com/nexmo/nexmo-java-code-snippets), [.NET](https://github.com/nexmo/nexmo-dotnet-code-snippets), [Node.js](https://github.com/nexmo/nexmo-node-code-snippets), [PHP](https://github.com/Nexmo/nexmo-php-code-snippets), [Python](https://github.com/nexmo/nexmo-python-code-snippets)
 
