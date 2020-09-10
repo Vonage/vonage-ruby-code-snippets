@@ -10,7 +10,7 @@ route :get, :post, '/webhooks/answer' do
   [
     {
       action: 'talk',
-      text: 'Welcome to a Nexmo powered conference call'
+      text: 'Welcome to a Vonage powered conference call'
     },
     {
       action: 'conversation',

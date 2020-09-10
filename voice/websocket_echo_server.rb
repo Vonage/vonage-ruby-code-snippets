@@ -4,7 +4,7 @@ require 'json'
 require 'sinatra'
 require 'thin'
 
-NEXMO_NUMBER = ENV['NEXMO_NUMBER']
+VONAGE_NUMBER = ENV['VONAGE_NUMBER']
 
 # See https://docs.nexmo.com/voice/voice-api/websockets for more instructions
 
@@ -50,7 +50,7 @@ get '/ncco' do
       'eventUrl' => [
         "#{base_url}/event"
       ],
-      'from' => NEXMO_NUMBER,
+      'from' => VONAGE_NUMBER,
       'endpoint' => [
         {
           'type' => 'websocket',

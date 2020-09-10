@@ -1,20 +1,20 @@
 require 'dotenv/load'
-require 'nexmo'
+require 'vonage'
 
-NEXMO_API_KEY = ENV['NEXMO_API_KEY']
-NEXMO_API_SECRET = ENV['NEXMO_API_SECRET']
+VONAGE_API_KEY = ENV['VONAGE_API_KEY']
+VONAGE_API_SECRET = ENV['VONAGE_API_SECRET']
 COUNTRY_CODE = ENV['COUNTRY_CODE']
-NEXMO_NUMBER = ENV['NEXMO_NUMBER']
+VONAGE_NUMBER = ENV['VONAGE_NUMBER']
 
-client = Nexmo::Client.new(
-  api_key: NEXMO_API_KEY,
-  api_secret: NEXMO_API_SECRET
+client = Vonage::Client.new(
+  api_key: VONAGE_API_KEY,
+  api_secret: VONAGE_API_SECRET
 )
 
 begin
   response = client.numbers.buy(
     country: COUNTRY_CODE,
-    msisdn: NEXMO_NUMBER
+    msisdn: VONAGE_NUMBER
   )
   puts "Number purchased"
 rescue

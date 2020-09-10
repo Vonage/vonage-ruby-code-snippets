@@ -1,16 +1,16 @@
 # frozen_string_literal: true
 
 require 'dotenv/load'
-require 'nexmo'
+require 'vonage'
 
-NEXMO_APPLICATION_ID = ENV['NEXMO_APPLICATION_ID']
-NEXMO_APPLICATION_PRIVATE_KEY_PATH = ENV['NEXMO_APPLICATION_PRIVATE_KEY_PATH']
+VONAGE_APPLICATION_ID = ENV['VONAGE_APPLICATION_ID']
+VONAGE_APPLICATION_PRIVATE_KEY_PATH = ENV['VONAGE_APPLICATION_PRIVATE_KEY_PATH']
 TO_NUMBER = ENV['TO_NUMBER']
-NEXMO_NUMBER = ENV['NEXMO_NUMBER']
+VONAGE_NUMBER = ENV['VONAGE_NUMBER']
 
-client = Nexmo::Client.new(
-  application_id: NEXMO_APPLICATION_ID,
-  private_key: File.read(NEXMO_APPLICATION_PRIVATE_KEY_PATH)
+client = Vonage::Client.new(
+  application_id: VONAGE_APPLICATION_ID,
+  private_key: File.read(VONAGE_APPLICATION_PRIVATE_KEY_PATH)
 )
 
 client.voice.create(
@@ -20,12 +20,12 @@ client.voice.create(
   }],
   from: {
     type: 'phone',
-    number: NEXMO_NUMBER
+    number: VONAGE_NUMBER
   },
   ncco: [
     {
       'action' => 'talk',
-      'text' => 'This is a text to speech call from Nexmo'
+      'text' => 'This is a text to speech call from Vonage'
     }
   ]
 )

@@ -1,22 +1,22 @@
 # frozen_string_literal: true
 
 require 'dotenv/load'
-require 'nexmo'
+require 'vonage'
 
-NEXMO_API_KEY = ENV['NEXMO_API_KEY']
-NEXMO_API_SECRET = ENV['NEXMO_API_SECRET']
+VONAGE_API_KEY = ENV['VONAGE_API_KEY']
+VONAGE_API_SECRET = ENV['VONAGE_API_SECRET']
 
-NEXMO_APPLICATION_ID = ENV['NEXMO_APPLICATION_ID']
+VONAGE_APPLICATION_ID = ENV['VONAGE_APPLICATION_ID']
 
-client = Nexmo::Client.new(
-  api_key: NEXMO_API_KEY,
-  api_secret: NEXMO_API_SECRET
+client = Vonage::Client.new(
+  api_key: VONAGE_API_KEY,
+  api_secret: VONAGE_API_SECRET
 )
 
 begin
   response = client.applications.update(
-    NEXMO_APPLICATION_ID,
-    id: NEXMO_APPLICATION_ID,
+    VONAGE_APPLICATION_ID,
+    id: VONAGE_APPLICATION_ID,
     name: 'Ruby Update App',
     capabilities: {
       'messages': {
