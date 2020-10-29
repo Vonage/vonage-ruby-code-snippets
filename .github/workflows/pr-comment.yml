@@ -1,0 +1,21 @@
+name: New Pull Request ADP Reminder
+on:
+  pull-request
+  
+jobs:
+  build:
+    name: Leave Pull Request Comment
+    runs-on: ubuntu-latest
+    steps:
+    - name: Create or Update Comment
+    uses: peter-evans/create-or-update-comment@v1.4.3
+    with:
+      body: |
+        If a code snippet has changed, its corresponding
+        line change reference used to render on ADP might
+        have changed as well.
+        
+        Before merging please verify whether an update
+        is needed on ADP. You can find all the line
+        references to these code snippets in the
+        [_examples folder](https://github.com/Nexmo/nexmo-developer/tree/master/_examples).
