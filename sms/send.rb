@@ -3,6 +3,7 @@ require 'vonage'
 
 VONAGE_API_KEY = ENV['VONAGE_API_KEY']
 VONAGE_API_SECRET = ENV['VONAGE_API_SECRET']
+VONAGE_BRAND_NAME = ENV['VONAGE_BRAND_NAME']
 TO_NUMBER = ENV['TO_NUMBER']
 
 client = Vonage::Client.new(
@@ -11,7 +12,7 @@ client = Vonage::Client.new(
 )
 
 client.sms.send(
-  from: 'Acme Inc',
+  from: VONAGE_BRAND_NAME,
   to: TO_NUMBER,
   text: 'A text message sent using the Vonage SMS API'
 )
