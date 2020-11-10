@@ -10,4 +10,4 @@ client = Vonage::Client.new(
   private_key: File.read(VONAGE_APPLICATION_PRIVATE_KEY_PATH)
 )
 
-response = client.voice.talk.start(UUID, text: 'Hello from Vonage', voice_name: "Kimberly")
+response = client.voice.talk.start(UUID, text: 'Hello from Vonage', language: 'en-US', style: 0)
