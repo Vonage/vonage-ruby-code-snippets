@@ -16,6 +16,7 @@ route :get, :post, '/webhooks/answer' do
     },
     {
       action: 'input',
+      type: [ 'speech' ],
       eventUrl: ["#{request.base_url}/webhooks/asr"],
       speech: {
         endOnSilence: 1,
