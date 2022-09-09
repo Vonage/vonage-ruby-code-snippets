@@ -18,15 +18,9 @@ message = Vonage::Messaging::Message.whatsapp(
   message: {
     name: "#{WHATSAPP_TEMPLATE_NAMESPACE}:#{WHATSAPP_TEMPLATE_NAME}",
     parameters: [
-       {
-          default: "Vonage Verification"
-       },
-       {
-          default: "64873"
-       },
-       {
-          default: "10"
-       }
+       "Vonage Verification",
+       "64873",
+       "10"
     ]
   },
   opts: {
