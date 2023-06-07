@@ -9,6 +9,6 @@ client.verify2.start_verification(
   brand: BRAND_NAME,
   workflow: [
     {channel: 'silent_auth', to: TO_NUMBER},
-    {channel: 'email', to: TO_EMAIL, from: FROM_EMAIL}
+    {channel: 'email', to: TO_EMAIL}
   ]
 )
