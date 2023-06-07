@@ -8,6 +8,6 @@ client = Vonage::Client.new(
 client.verify2.start_verification(
   brand: BRAND_NAME,
   workflow: [
-    {channel: 'email', to: TO_EMAIL, from: FROM_EMAIL}
+    {channel: 'email', to: TO_EMAIL}
   ]
 )
