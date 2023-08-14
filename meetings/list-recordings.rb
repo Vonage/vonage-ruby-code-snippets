@@ -3,13 +3,11 @@ require 'vonage'
 
 VONAGE_APPLICATION_ID = ENV['VONAGE_APPLICATION_ID']
 VONAGE_APPLICATION_PRIVATE_KEY_PATH = ENV['VONAGE_APPLICATION_PRIVATE_KEY_PATH']
-REQUEST_ID = ENV['REQUEST_ID']
+SESSION_ID = ENV['SESSION_ID']
 
 client = Vonage::Client.new(
   application_id: VONAGE_APPLICATION_ID,
   private_key: File.read(VONAGE_APPLICATION_PRIVATE_KEY_PATH)
 )
 
-client.verify2.cancel_verification_request(
-  request_id: REQUEST_ID
-)
+recordings = client.meetings.sessions.list_recordings(session_id: SESSION_ID)
