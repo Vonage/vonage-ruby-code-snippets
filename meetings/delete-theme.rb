@@ -10,4 +10,4 @@ client = Vonage::Client.new(
   private_key: File.read(VONAGE_APPLICATION_PRIVATE_KEY_PATH)
 )
 
-client.meetings.themes.delete(theme_id: "4b03dfcf-ee92-49e2-a0e8-1fb158be05e2")
+client.meetings.themes.delete(theme_id: THEME_ID)
