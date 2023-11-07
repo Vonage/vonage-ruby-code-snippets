@@ -5,8 +5,9 @@ VONAGE_APPLICATION_ID = ENV['VONAGE_APPLICATION_ID']
 VONAGE_APPLICATION_PRIVATE_KEY_PATH = ENV['VONAGE_APPLICATION_PRIVATE_KEY_PATH']
 VONAGE_WHATSAPP_NUMBER = ENV['VONAGE_WHATSAPP_NUMBER']
 TO_NUMBER = ENV['TO_NUMBER']
-WHATSAPP_TEMPLATE_NAMESPACE = ENV['WHATSAPP_TEMPLATE_NAMESPACE']
 WHATSAPP_TEMPLATE_NAME = ENV['WHATSAPP_TEMPLATE_NAME']
+IMAGE_URL = ENV['IMAGE_URL']
+WHATSAPP_TEMPLATE_REPLACEMENT_TEXT = ENV['WHATSAPP_TEMPLATE_REPLACEMENT_TEXT']
 
 client = Vonage::Client.new(
   application_id: VONAGE_APPLICATION_ID,
@@ -18,7 +19,6 @@ message = Vonage::Messaging::Message.whatsapp(
   message: {
     type: "template",
     template: {
-      namespace: WHATSAPP_TEMPLATE_NAMESPACE,
       name: WHATSAPP_TEMPLATE_NAME,
       language: {
         policy: "deterministic",
@@ -29,12 +29,9 @@ message = Vonage::Messaging::Message.whatsapp(
           type: "header",
           parameters: [
             {
-              type: "location",
-              location: {
-                longitude: -122.425332,
-                latitude: 37.758056,
-                name: "Facebook HQ",
-                address: "1 Hacker Way, Menlo Park, CA 94025"
+              type: "image",
+              image: {
+                link: IMAGE_URL
               }
             }
           ]
@@ -42,9 +39,10 @@ message = Vonage::Messaging::Message.whatsapp(
         {
           type: "body",
           parameters: [
-            "Value 1",
-            "Value 2",
-            "Value 3"
+            {
+              type: "text",
+              text: WHATSAPP_TEMPLATE_REPLACEMENT_TEXT
+            }
           ]
         }
       ]
