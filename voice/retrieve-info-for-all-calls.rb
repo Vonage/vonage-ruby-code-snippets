@@ -15,7 +15,7 @@ yesterday = now - (3600 * 24)
 
 response = client.voice.list({date_start: yesterday.utc.iso8601, date_end: now.utc.iso8601})
 
-calls = response._embedded.voice
+calls = response._embedded.calls
 calls.each do |call|
   puts call.inspect
 end
