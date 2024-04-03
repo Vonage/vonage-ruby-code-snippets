@@ -15,7 +15,7 @@ client = Vonage::Client.new(
 
 message = Vonage::Messaging::Message.viber(
   type: 'text',
-  message: "This is a Viber Service Message text message sent using the Messages API"
+  message: "This is a Viber Service Message text message sent using the Messages API via the Messages Sandbox"
 )
 
 client.messaging.send(
