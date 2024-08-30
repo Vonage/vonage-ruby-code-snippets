@@ -26,7 +26,7 @@ message = client.messaging.rcs(
               startTime: "2024-08-24T20:00:00Z",
               endTime: "2024-08-24T22:00:00Z",
               title: "Vonage API Product Launch",
-              description: "Join us for the launch of our latest product!",
+              description: "Join us for the launch of our latest product!"
             }
           }
         }

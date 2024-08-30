@@ -15,7 +15,7 @@ client = Vonage::Client.new(
 message = client.messaging.rcs(
   type: 'video',
   message: {
-    url: ENV['VIDEO_URL'],
+    url: ENV['VIDEO_URL']
   }
 )
 

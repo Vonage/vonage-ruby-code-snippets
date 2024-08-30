@@ -15,7 +15,7 @@ client = Vonage::Client.new(
 message = client.messaging.rcs(
   type: 'image',
   message: {
-    url: ENV['IMAGE_URL'],
+    url: ENV['IMAGE_URL']
   }
 )
 

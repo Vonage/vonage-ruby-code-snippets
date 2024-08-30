@@ -15,7 +15,7 @@ client = Vonage::Client.new(
 message = client.messaging.rcs(
   type: 'file',
   message: {
-    url: ENV['FILE_URL'],
+    url: ENV['FILE_URL']
   }
 )
 
