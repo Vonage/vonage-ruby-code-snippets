@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'dotenv', '2.7.6'
 gem 'faye-websocket', '0.11.0'
-gem 'vonage', '~> 7.2.1'
+gem 'vonage', '~> 7.28'
 gem 'sinatra', '2.1.0'
 gem 'sinatra-contrib', '2.1.0'
 gem 'rack-contrib', '2.3.0'
