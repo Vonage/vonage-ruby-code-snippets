@@ -2,24 +2,24 @@ require 'dotenv/load'
 require 'vonage'
 
 VONAGE_APPLICATION_ID = ENV['VONAGE_APPLICATION_ID']
-VONAGE_APPLICATION_PRIVATE_KEY_PATH = ENV['VONAGE_APPLICATION_PRIVATE_KEY_PATH']
-MESSAGES_SANDBOX_URL= ENV['MESSAGES_SANDBOX_URL']
-MESSAGES_SANDBOX_WHATSAPP_NUMBER = ENV['MESSAGES_SANDBOX_WHATSAPP_NUMBER']
-MESSAGES_SANDBOX_ALLOW_LISTED_TO_NUMBER = ENV['MESSAGES_SANDBOX_ALLOW_LISTED_TO_NUMBER']
+VONAGE_PRIVATE_KEY = ENV['VONAGE_PRIVATE_KEY']
+WHATSAPP_SENDER_ID = ENV['WHATSAPP_SENDER_ID']
+MESSAGES_TO_NUMBER = ENV['MESSAGES_TO_NUMBER']
+MESSAGES_SANDBOX_HOST = ENV['MESSAGES_SANDBOX_HOST']
 
 client = Vonage::Client.new(
   application_id: VONAGE_APPLICATION_ID,
-  private_key: File.read(VONAGE_APPLICATION_PRIVATE_KEY_PATH),
-  api_host: MESSAGES_SANDBOX_URL
+  private_key: VONAGE_PRIVATE_KEY,
+  api_host: MESSAGES_SANDBOX_HOST
 )
 
-message = Vonage::Messaging::Message.whatsapp(
+message = client.messaging.whatsapp(
   type: 'text',
-  message: "This is a WhatsApp Message text message sent using the Messages API via the Messages Sandbox"
+  message: "This is a WhatsApp text message sent using the Vonage Messages API"
 )
 
 client.messaging.send(
-  from: MESSAGES_SANDBOX_WHATSAPP_NUMBER,
-  to: MESSAGES_SANDBOX_ALLOW_LISTED_TO_NUMBER,
+  from: WHATSAPP_SENDER_ID,
+  to: MESSAGES_TO_NUMBER,
   **message
 )
