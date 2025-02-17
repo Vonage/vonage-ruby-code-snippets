@@ -3,8 +3,8 @@ require 'vonage'
 
 VONAGE_API_KEY = ENV['VONAGE_API_KEY']
 VONAGE_API_SECRET = ENV['VONAGE_API_SECRET']
-VONAGE_BRAND_NAME = ENV['VONAGE_BRAND_NAME']
-TO_NUMBER = ENV['TO_NUMBER']
+SMS_SENDER_ID = ENV['SMS_SENDER_ID']
+SMS_TO_NUMBER = ENV['SMS_TO_NUMBER']
 
 client = Vonage::Client.new(
   api_key: VONAGE_API_KEY,
@@ -12,8 +12,8 @@ client = Vonage::Client.new(
 )
 
 client.sms.send(
-  from: VONAGE_BRAND_NAME,
-  to: TO_NUMBER,
+  from: SMS_SENDER_ID,
+  to: SMS_TO_NUMBER,
   text: 'こんにちは世界',
   type: "unicode"
 )
