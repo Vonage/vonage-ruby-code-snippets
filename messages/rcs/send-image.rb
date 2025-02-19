@@ -2,25 +2,25 @@ require 'dotenv/load'
 require 'vonage'
 
 VONAGE_APPLICATION_ID = ENV['VONAGE_APPLICATION_ID']
-VONAGE_APPLICATION_PRIVATE_KEY_PATH = ENV['VONAGE_APPLICATION_PRIVATE_KEY_PATH']
+VONAGE_PRIVATE_KEY = ENV['VONAGE_PRIVATE_KEY']
 RCS_SENDER_ID = ENV['RCS_SENDER_ID']
-TO_NUMBER = ENV['TO_NUMBER']
-IMAGE_URL = ENV['IMAGE_URL']
+MESSAGES_TO_NUMBER = ENV['MESSAGES_TO_NUMBER']
+MESSAGES_IMAGE_URL = ENV['MESSAGES_IMAGE_URL']
 
 client = Vonage::Client.new(
   application_id: VONAGE_APPLICATION_ID,
-  private_key: File.read(VONAGE_APPLICATION_PRIVATE_KEY_PATH)
+  private_key: VONAGE_PRIVATE_KEY
 )
 
 message = client.messaging.rcs(
-  type: 'image',
+  type: 'file',
   message: {
-    url: ENV['IMAGE_URL']
+    url: MESSAGES_IMAGE_URL
   }
 )
 
 client.messaging.send(
   from: RCS_SENDER_ID,
-  to: TO_NUMBER,
+  to: MESSAGES_TO_NUMBER,
   **message
 )

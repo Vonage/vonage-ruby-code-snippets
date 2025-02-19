@@ -2,13 +2,13 @@ require 'dotenv/load'
 require 'vonage'
 
 VONAGE_APPLICATION_ID = ENV['VONAGE_APPLICATION_ID']
-VONAGE_APPLICATION_PRIVATE_KEY_PATH = ENV['VONAGE_APPLICATION_PRIVATE_KEY_PATH']
+VONAGE_PRIVATE_KEY = ENV['VONAGE_PRIVATE_KEY']
 RCS_SENDER_ID = ENV['RCS_SENDER_ID']
-TO_NUMBER = ENV['TO_NUMBER']
+MESSAGES_TO_NUMBER = ENV['MESSAGES_TO_NUMBER']
 
 client = Vonage::Client.new(
   application_id: VONAGE_APPLICATION_ID,
-  private_key: File.read(VONAGE_APPLICATION_PRIVATE_KEY_PATH)
+  private_key: VONAGE_PRIVATE_KEY
 )
 
 message = client.messaging.rcs(
@@ -26,7 +26,7 @@ message = client.messaging.rcs(
               startTime: "2024-08-24T20:00:00Z",
               endTime: "2024-08-24T22:00:00Z",
               title: "Vonage API Product Launch",
-              description: "Join us for the launch of our latest product!"
+              description: "Event to demo a new and exciting Vonage API product"
             }
           }
         }
@@ -37,6 +37,6 @@ message = client.messaging.rcs(
 
 client.messaging.send(
   from: RCS_SENDER_ID,
-  to: TO_NUMBER,
+  to: MESSAGES_TO_NUMBER,
   **message
 )
