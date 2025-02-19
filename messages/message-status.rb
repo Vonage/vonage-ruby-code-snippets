@@ -2,8 +2,9 @@ require 'sinatra'
 require 'json'
 
 post "/webhooks/messages/status" do
-  puts "Received message status webhook:\n\n"
-  p JSON.parse(request.body.read)
+  payload = JSON.parse(request.body.read)
+  puts "Received message status webhook:\n#{payload}\n\n"
+
   status 200
 end
 
