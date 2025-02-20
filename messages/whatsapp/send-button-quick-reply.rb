@@ -2,35 +2,36 @@ require 'dotenv/load'
 require 'vonage'
 
 VONAGE_APPLICATION_ID = ENV['VONAGE_APPLICATION_ID']
-VONAGE_APPLICATION_PRIVATE_KEY_PATH = ENV['VONAGE_APPLICATION_PRIVATE_KEY_PATH']
-VONAGE_WHATSAPP_NUMBER = ENV['VONAGE_WHATSAPP_NUMBER']
-TO_NUMBER = ENV['TO_NUMBER']
-WHATSAPP_TEMPLATE_NAMESPACE = ENV['WHATSAPP_TEMPLATE_NAMESPACE']
+VONAGE_PRIVATE_KEY = ENV['VONAGE_PRIVATE_KEY']
+WHATSAPP_SENDER_ID = ENV['WHATSAPP_SENDER_ID']
+MESSAGES_TO_NUMBER = ENV['MESSAGES_TO_NUMBER']
 WHATSAPP_TEMPLATE_NAME = ENV['WHATSAPP_TEMPLATE_NAME']
+MESSAGES_IMAGE_URL = ENV['MESSAGES_IMAGE_URL']
 
 client = Vonage::Client.new(
   application_id: VONAGE_APPLICATION_ID,
-  private_key: File.read(VONAGE_APPLICATION_PRIVATE_KEY_PATH)
+  private_key: VONAGE_PRIVATE_KEY
 )
 
-message = Vonage::Messaging::Message.whatsapp(
+message = client.messaging.whatsapp(
   type: 'custom',
   message: {
     type: "template",
     template: {
-      namespace: WHATSAPP_TEMPLATE_NAMESPACE,
       name: WHATSAPP_TEMPLATE_NAME,
       language: {
-        code: "en",
-        policy: "deterministic"
+        policy: "deterministic",
+        code: "en"
       },
       components: [
         {
           type: "header",
           parameters: [
             {
-              type: "text",
-              text: "12/26"
+              type: "image",
+              image: {
+                link: MESSAGES_IMAGE_URL
+              }
             }
           ]
         },
@@ -39,22 +40,30 @@ message = Vonage::Messaging::Message.whatsapp(
           parameters: [
             {
               type: "text",
-              text: "*Ski Trip*"
+              parameter_name: "customer_name",
+              text: "Joe Bloggs"
             },
             {
               type: "text",
-              text: "2019-12-26"
+              parameter_name: "dentist_name",
+              text: "Mr Smith"
             },
             {
               type: "text",
-              text: "*Squaw Valley Ski Resort, Tahoe*"
+              parameter_name: "appointment_date",
+              text: "2025-02-26"
+            },
+            {
+              type: "text",
+              parameter_name: "appointment_location",
+              text: "ACME Dental Practice"
             }
           ]
         },
         {
           type: "button",
           sub_type: "quick_reply",
-          index: 0,
+          index: "0",
           parameters: [
             {
               type: "payload",
@@ -65,7 +74,7 @@ message = Vonage::Messaging::Message.whatsapp(
         {
           type: "button",
           sub_type: "quick_reply",
-          index: 1,
+          index: "1",
           parameters: [
             {
               type: "payload",
@@ -79,7 +88,8 @@ message = Vonage::Messaging::Message.whatsapp(
 )
 
 client.messaging.send(
-  from: VONAGE_WHATSAPP_NUMBER,
-  to: TO_NUMBER,
+  from: WHATSAPP_SENDER_ID,
+  to: MESSAGES_TO_NUMBER,
   **message
 )
+

@@ -2,19 +2,18 @@ require 'dotenv/load'
 require 'vonage'
 
 VONAGE_APPLICATION_ID = ENV['VONAGE_APPLICATION_ID']
-VONAGE_APPLICATION_PRIVATE_KEY_PATH = ENV['VONAGE_APPLICATION_PRIVATE_KEY_PATH']
-VONAGE_WHATSAPP_NUMBER = ENV['VONAGE_WHATSAPP_NUMBER']
-TO_NUMBER = ENV['TO_NUMBER']
+VONAGE_PRIVATE_KEY = ENV['VONAGE_PRIVATE_KEY']
+WHATSAPP_SENDER_ID = ENV['WHATSAPP_SENDER_ID']
+MESSAGES_TO_NUMBER = ENV['MESSAGES_TO_NUMBER']
 WHATSAPP_TEMPLATE_NAME = ENV['WHATSAPP_TEMPLATE_NAME']
-IMAGE_URL = ENV['IMAGE_URL']
-WHATSAPP_TEMPLATE_REPLACEMENT_TEXT = ENV['WHATSAPP_TEMPLATE_REPLACEMENT_TEXT']
+MESSAGES_IMAGE_URL = ENV['MESSAGES_IMAGE_URL']
 
 client = Vonage::Client.new(
   application_id: VONAGE_APPLICATION_ID,
-  private_key: File.read(VONAGE_APPLICATION_PRIVATE_KEY_PATH)
+  private_key: VONAGE_PRIVATE_KEY
 )
 
-message = Vonage::Messaging::Message.whatsapp(
+message = client.messaging.whatsapp(
   type: 'custom',
   message: {
     type: "template",
@@ -31,7 +30,7 @@ message = Vonage::Messaging::Message.whatsapp(
             {
               type: "image",
               image: {
-                link: IMAGE_URL
+                link: MESSAGES_IMAGE_URL
               }
             }
           ]
@@ -41,7 +40,11 @@ message = Vonage::Messaging::Message.whatsapp(
           parameters: [
             {
               type: "text",
-              text: WHATSAPP_TEMPLATE_REPLACEMENT_TEXT
+              text: "Joe Bloggs"
+            },
+            {
+              type: "text",
+              text: "AB123456"
             }
           ]
         }
@@ -51,7 +54,7 @@ message = Vonage::Messaging::Message.whatsapp(
 )
 
 client.messaging.send(
-  from: VONAGE_WHATSAPP_NUMBER,
-  to: TO_NUMBER,
+  from: WHATSAPP_SENDER_ID,
+  to: MESSAGES_TO_NUMBER,
   **message
 )
