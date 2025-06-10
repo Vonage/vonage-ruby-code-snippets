@@ -11,12 +11,7 @@ client = Vonage::Client.new(
   api_secret: VONAGE_API_SECRET
 )
 
-begin
-  response = client.numbers.buy(
-    country: COUNTRY_CODE,
-    msisdn: VONAGE_NUMBER
-  )
-  puts "Number purchased"
-rescue
-  puts "Error purchasing number"
-end
+response = client.numbers.buy(
+  country: COUNTRY_CODE,
+  msisdn: VONAGE_NUMBER
+)
