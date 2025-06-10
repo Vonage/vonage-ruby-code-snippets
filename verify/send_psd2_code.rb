@@ -5,7 +5,9 @@ require 'vonage'
 
 VONAGE_API_KEY = ENV['VONAGE_API_KEY']
 VONAGE_API_SECRET = ENV['VONAGE_API_SECRET']
-TO_NUMBER = ENV['TO_NUMBER']
+VERIFY_NUMBER = ENV['VERIFY_NUMBER']
+VERIFY_PAYEE_NAME = ENV['VERIFY_PAYEE_NAME']
+VERIFY_AMOUNT = ENV['VERIFY_AMOUNT']
 
 client = Vonage::Client.new(
   api_key: VONAGE_API_KEY,
@@ -13,12 +15,7 @@ client = Vonage::Client.new(
 )
 
 response = client.verify.psd2(
-  number: TO_NUMBER,
-  payee: 'AcmeInc',
-  amount: 12.34
+  number: VERIFY_NUMBER,
+  payee: VERIFY_PAYEE_NAME,
+  amount: VERIFY_AMOUNT
 )
-
-if response
-  # display the Verify PSD2 `request_id`
-  puts response.request_id
-end

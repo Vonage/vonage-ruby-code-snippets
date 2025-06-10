@@ -5,13 +5,9 @@ require 'vonage'
 
 VONAGE_API_KEY = ENV['VONAGE_API_KEY']
 VONAGE_API_SECRET = ENV['VONAGE_API_SECRET']
-TO_NUMBER = ENV['TO_NUMBER']
-
-WORKFLOW_ID = ARGV[0]
-if WORKFLOW_ID.empty?
-  puts 'Please supply the workflow_id'
-  exit
-end
+VERIFY_NUMBER = ENV['VERIFY_NUMBER']
+VERIFY_BRAND_NAME = ENV['VERIFY_BRAND_NAME']
+VERIFY_WORKFLOW_ID = ENV['VERIFY_WORKFLOW_ID']
 
 client = Vonage::Client.new(
   api_key: VONAGE_API_KEY,
@@ -19,12 +15,7 @@ client = Vonage::Client.new(
 )
 
 response = client.verify.request(
-  number: TO_NUMBER,
-  brand: 'AcmeInc',
-  workflow_id: WORKFLOW_ID
+  number: VERIFY_NUMBER,
+  brand: VERIFY_BRAND_NAME
+  workflow_id: VERIFY_WORKFLOW_ID
 )
-
-if response
-  # display the Verify `request_id`
-  puts response.request_id
-end
