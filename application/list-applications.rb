@@ -12,7 +12,3 @@ client = Vonage::Client.new(
 )
 
 response = client.applications.list
-
-response._embedded.applications.each do |application|
-  puts "#{application.name}: #{application.id}"
-end
