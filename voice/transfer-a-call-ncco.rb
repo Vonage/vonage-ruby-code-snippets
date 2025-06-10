@@ -5,12 +5,12 @@ require 'dotenv/load'
 require 'vonage'
 
 VONAGE_APPLICATION_ID = ENV['VONAGE_APPLICATION_ID']
-VONAGE_APPLICATION_PRIVATE_KEY_PATH = ENV['VONAGE_APPLICATION_PRIVATE_KEY_PATH']
-UUID = ENV['UUID']
+VONAGE_PRIVATE_KEY = ENV['VONAGE_PRIVATE_KEY']
+VOICE_CALL_ID = ENV['VOICE_CALL_ID']
 
 client = Vonage::Client.new(
   application_id: VONAGE_APPLICATION_ID,
-  private_key: File.read(VONAGE_APPLICATION_PRIVATE_KEY_PATH)
+  private_key: VONAGE_PRIVATE_KEY
 )
 
 ncco = {
@@ -21,6 +21,4 @@ ncco = {
   ]
 }
 
-response = client.voice.transfer(UUID, destination: ncco)
-
-puts response.inspect
+response = client.voice.transfer(VOICE_CALL_ID, destination: ncco)

@@ -9,4 +9,4 @@ client = Vonage::Client.new(
   api_secret: VONAGE_API_SECRET
 )
 
-subaccounts_list = client.subaccounts.list
+response = client.subaccounts.list

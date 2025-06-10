@@ -2,6 +2,8 @@ require 'sinatra'
 require 'sinatra/multi_route'
 require 'json'
 
+VOICE_CONFERENCE_NAME = ENV['VOICE_CONFERENCE_NAME']
+
 before do
   content_type :json
 end
@@ -10,11 +12,11 @@ route :get, :post, '/webhooks/answer' do
   [
     {
       action: 'talk',
-      text: 'Welcome to a Vonage powered conference call'
+      text: 'Please wait while we connect you to the conference'
     },
     {
       action: 'conversation',
-      name: 'room-name'
+      name: VOICE_CONFERENCE_NAME
     }
   ].to_json
 end

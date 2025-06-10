@@ -10,4 +10,4 @@ client = Vonage::Client.new(
   api_secret: VONAGE_API_SECRET
 )
 
-subaccount = client.subaccounts.find(subaccount_key: SUBACCOUNT_KEY)
+response = client.subaccounts.find(subaccount_key: SUBACCOUNT_KEY)

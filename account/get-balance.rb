@@ -9,4 +9,4 @@ client = Vonage::Client.new(
   api_secret: VONAGE_API_SECRET
 )
 
-puts "#{client.account.balance.value.round(2)} EUR"
+response = client.account.balance

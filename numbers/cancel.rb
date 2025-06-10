@@ -11,12 +11,7 @@ client = Vonage::Client.new(
   api_secret: VONAGE_API_SECRET
 )
 
-begin
-  response = client.numbers.cancel(
-    country: COUNTRY_CODE,
-    msisdn: VONAGE_NUMBER
-  )
-  puts "Number cancelled"
-rescue
-  puts "Error cancelling number"
-end
+response = client.numbers.cancel(
+  country: COUNTRY_CODE,
+  msisdn: VONAGE_NUMBER
+)

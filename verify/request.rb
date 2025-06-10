@@ -3,7 +3,8 @@ require 'vonage'
 
 VONAGE_API_KEY = ENV['VONAGE_API_KEY']
 VONAGE_API_SECRET = ENV['VONAGE_API_SECRET']
-TO_NUMBER = ENV['TO_NUMBER']
+VERIFY_NUMBER = ENV['VERIFY_NUMBER']
+VERIFY_BRAND_NAME = ENV['VERIFY_BRAND_NAME']
 
 client = Vonage::Client.new(
   api_key: VONAGE_API_KEY,
@@ -11,11 +12,6 @@ client = Vonage::Client.new(
 )
 
 response = client.verify.request(
-  number: TO_NUMBER,
-  brand: 'AcmeInc'
+  number: VERIFY_NUMBER,
+  brand: VERIFY_BRAND_NAME
 )
-
-if response
-  # display the Verify `request_id`
-  puts response.request_id
-end

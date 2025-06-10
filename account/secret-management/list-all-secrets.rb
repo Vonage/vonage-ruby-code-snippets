@@ -11,8 +11,4 @@ client = Vonage::Client.new(
   api_secret: VONAGE_API_SECRET
 )
 
-result = client.secrets.list
-
-result._embedded.secrets.each do |secret|
-  puts "ID: #{secret.id} created on #{secret.created_at}"
-end
+response = client.secrets.list

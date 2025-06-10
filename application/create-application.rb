@@ -11,25 +11,20 @@ client = Vonage::Client.new(
   api_secret: VONAGE_API_SECRET
 )
 
-begin
-  response = client.applications.create(
-    name: 'Code Example App',
-    capabilities: {
-      'messages': {
-        'webhooks': {
-          'inbound_url': {
-            'address': 'https://example.com/webhooks/inbound',
-            'http_method': 'POST'
-          },
-          'status_url': {
-            'address': 'https://example.com/webhooks/status',
-            'http_method': 'POST'
-          }
+response = client.applications.create(
+  name: 'Code Example App',
+  capabilities: {
+    'messages': {
+      'webhooks': {
+        'inbound_url': {
+          'address': 'https://example.com/webhooks/inbound',
+          'http_method': 'POST'
+        },
+        'status_url': {
+          'address': 'https://example.com/webhooks/status',
+          'http_method': 'POST'
         }
       }
     }
-  )
-  puts "Application #{response.id} Created Successfully" if response.id
-rescue StandardError => e
-  puts e.message
-end
+  }
+)

@@ -2,24 +2,25 @@ require 'dotenv/load'
 require 'vonage'
 
 VONAGE_APPLICATION_ID = ENV['VONAGE_APPLICATION_ID']
-VONAGE_APPLICATION_PRIVATE_KEY_PATH = ENV['VONAGE_APPLICATION_PRIVATE_KEY_PATH']
-VONAGE_FB_SENDER_ID = ENV['VONAGE_FB_SENDER_ID']
-FB_RECIPIENT_ID = ENV['FB_RECIPIENT_ID']
+VONAGE_PRIVATE_KEY = ENV['VONAGE_PRIVATE_KEY']
+MESSENGER_SENDER_ID = ENV['MESSENGER_SENDER_ID']
+MESSENGER_RECIPIENT_ID = ENV['MESSENGER_RECIPIENT_ID']
+MESSAGES_FILE_URL = ENV['MESSAGES_FILE_URL']
 
 client = Vonage::Client.new(
   application_id: VONAGE_APPLICATION_ID,
-  private_key: File.read(VONAGE_APPLICATION_PRIVATE_KEY_PATH)
+  private_key: VONAGE_PRIVATE_KEY
 )
 
-message = Vonage::Messaging::Message.messenger(
+message = client.messaging.messenger(
   type: 'file',
   message: {
-    url: "https://example.com/file.pdf"
+    url: MESSAGES_FILE_URL
   }
 )
 
 client.messaging.send(
-  from: VONAGE_FB_SENDER_ID,
-  to: FB_RECIPIENT_ID,
+  from: MESSENGER_SENDER_ID,
+  to: MESSENGER_RECIPIENT_ID,
   **message
 )

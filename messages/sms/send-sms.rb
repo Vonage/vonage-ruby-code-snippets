@@ -2,21 +2,21 @@ require 'dotenv/load'
 require 'vonage'
 
 VONAGE_APPLICATION_ID = ENV['VONAGE_APPLICATION_ID']
-VONAGE_APPLICATION_PRIVATE_KEY_PATH = ENV['VONAGE_APPLICATION_PRIVATE_KEY_PATH']
-VONAGE_FROM_NUMBER = ENV['VONAGE_FROM_NUMBER']
-TO_NUMBER = ENV['TO_NUMBER']
+VONAGE_PRIVATE_KEY = ENV['VONAGE_PRIVATE_KEY']
+SMS_SENDER_ID = ENV['SMS_SENDER_ID']
+MESSAGES_TO_NUMBER = ENV['MESSAGES_TO_NUMBER']
 
 client = Vonage::Client.new(
   application_id: VONAGE_APPLICATION_ID,
-  private_key: File.read(VONAGE_APPLICATION_PRIVATE_KEY_PATH)
+  private_key: VONAGE_PRIVATE_KEY
 )
 
-message = Vonage::Messaging::Message.sms(
+message = client.messaging.sms(
   message: "A SMS message sent using the Vonage Messages API"
 )
 
 client.messaging.send(
-  from: VONAGE_FROM_NUMBER,
-  to: TO_NUMBER,
+  from: SMS_SENDER_ID,
+  to: MESSAGES_TO_NUMBER,
   **message
 )

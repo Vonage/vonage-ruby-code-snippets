@@ -5,17 +5,11 @@ require 'vonage'
 
 VONAGE_API_KEY = ENV['VONAGE_API_KEY']
 VONAGE_API_SECRET = ENV['VONAGE_API_SECRET']
-
-VONAGE_SECRET_ID = ENV['VONAGE_SECRET_ID']
+ACCOUNT_SECRET_ID = ENV['ACCOUNT_SECRET_ID']
 
 client = Vonage::Client.new(
   api_key: VONAGE_API_KEY,
   api_secret: VONAGE_API_SECRET
 )
 
-begin
-  response = client.secrets.revoke(VONAGE_SECRET_ID)
-  puts 'OK' if response == :no_content
-rescue StandardError => e
-  puts e.message
-end
+response = client.secrets.revoke(ACCOUNT_SECRET_ID)

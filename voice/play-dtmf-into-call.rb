@@ -2,15 +2,13 @@ require 'dotenv/load'
 require 'vonage'
 
 VONAGE_APPLICATION_ID = ENV['VONAGE_APPLICATION_ID']
-VONAGE_APPLICATION_PRIVATE_KEY_PATH = ENV['VONAGE_APPLICATION_PRIVATE_KEY_PATH']
-UUID = ENV['UUID']
+VONAGE_PRIVATE_KEY = ENV['VONAGE_PRIVATE_KEY']
+VOICE_CALL_ID = ENV['VOICE_CALL_ID']
+VOICE_DTMF_DIGITS = ENV['VOICE_DTMF_DIGITS']
 
 client = Vonage::Client.new(
   application_id: VONAGE_APPLICATION_ID,
-  private_key: File.read(VONAGE_APPLICATION_PRIVATE_KEY_PATH)
+  private_key: VONAGE_PRIVATE_KEY
 )
 
-DIGITS = '332393'
-response = client.voice.dtmf.send(UUID, digits: DIGITS)
-
-puts response.inspect
+response = client.voice.dtmf.send(VOICE_CALL_ID, digits: VOICE_DTMF_DIGITS)

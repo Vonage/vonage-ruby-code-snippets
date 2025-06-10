@@ -2,24 +2,25 @@ require 'dotenv/load'
 require 'vonage'
 
 VONAGE_APPLICATION_ID = ENV['VONAGE_APPLICATION_ID']
-VONAGE_APPLICATION_PRIVATE_KEY_PATH = ENV['VONAGE_APPLICATION_PRIVATE_KEY_PATH']
-VONAGE_VIBER_SERVICE_MESSAGE_ID = ENV['VONAGE_VIBER_SERVICE_MESSAGE_ID']
-TO_NUMBER = ENV['TO_NUMBER']
+VONAGE_PRIVATE_KEY = ENV['VONAGE_PRIVATE_KEY']
+VIBER_SENDER_ID = ENV['VIBER_SENDER_ID']
+MESSAGES_TO_NUMBER = ENV['MESSAGES_TO_NUMBER']
+MESSAGES_IMAGE_URL = ENV['MESSAGES_IMAGE_URL']
 
 client = Vonage::Client.new(
   application_id: VONAGE_APPLICATION_ID,
-  private_key: File.read(VONAGE_APPLICATION_PRIVATE_KEY_PATH)
+  private_key: VONAGE_PRIVATE_KEY
 )
 
-message = Vonage::Messaging::Message.viber(
+message = client.messaging.viber(
   type: 'image',
   message: {
-    url: "https://example.com/image.jpg"
+    url: MESSAGES_IMAGE_URL
   }
 )
 
 client.messaging.send(
-  from: VONAGE_VIBER_SERVICE_MESSAGE_ID,
-  to: TO_NUMBER,
+  from: VIBER_SENDER_ID,
+  to: MESSAGES_TO_NUMBER,
   **message
 )

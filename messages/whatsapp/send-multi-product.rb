@@ -2,18 +2,19 @@ require 'dotenv/load'
 require 'vonage'
 
 VONAGE_APPLICATION_ID = ENV['VONAGE_APPLICATION_ID']
-VONAGE_APPLICATION_PRIVATE_KEY_PATH = ENV['VONAGE_APPLICATION_PRIVATE_KEY_PATH']
-VONAGE_WHATSAPP_NUMBER = ENV['VONAGE_WHATSAPP_NUMBER']
-TO_NUMBER = ENV['TO_NUMBER']
-CATALOG_ID = ENV['CATALOG_ID']
-PRODUCT_ID = ENV['PRODUCT_ID']
+VONAGE_PRIVATE_KEY = ENV['VONAGE_PRIVATE_KEY']
+WHATSAPP_SENDER_ID = ENV['WHATSAPP_SENDER_ID']
+MESSAGES_TO_NUMBER = ENV['MESSAGES_TO_NUMBER']
+WHATSAPP_CATALOG_ID = ENV['WHATSAPP_CATALOG_ID']
+WHATSAPP_PRODUCT_ID_1 = ENV['WHATSAPP_PRODUCT_ID_1']
+WHATSAPP_PRODUCT_ID_2 = ENV['WHATSAPP_PRODUCT_ID_2']
 
 client = Vonage::Client.new(
   application_id: VONAGE_APPLICATION_ID,
-  private_key: File.read(VONAGE_APPLICATION_PRIVATE_KEY_PATH)
+  private_key: VONAGE_PRIVATE_KEY
 )
 
-message = Vonage::Messaging::Message.whatsapp(
+message = client.messaging.whatsapp(
   type: 'custom',
   message: {
     type: "interactive",
@@ -22,7 +23,7 @@ message = Vonage::Messaging::Message.whatsapp(
       header: {
         type: "text",
         text: "Our top products"
-      }
+      },
       body: {
         text: "Check out these great products"
       },
@@ -30,19 +31,25 @@ message = Vonage::Messaging::Message.whatsapp(
         text: "Sale now on!"
       },
       action: {
-        catalog_id: CATALOG_ID,
+        catalog_id: WHATSAPP_CATALOG_ID,
         sections: [
           {
             title: "Cool products",
             product_items: [
-              { product_retailer_id: PRODUCT_ID },
-              { product_retailer_id: PRODUCT_ID }
+              {
+                product_retailer_id: WHATSAPP_PRODUCT_ID_1
+              },
+              {
+                product_retailer_id: WHATSAPP_PRODUCT_ID_2
+              }
             ]
           },
           {
             title: "Awesome products",
             product_items: [
-              { product_retailer_id: PRODUCT_ID }
+              {
+                product_retailer_id: WHATSAPP_PRODUCT_ID_1
+              }
             ]
           }
         ]
@@ -52,7 +59,7 @@ message = Vonage::Messaging::Message.whatsapp(
 )
 
 client.messaging.send(
-  from: VONAGE_WHATSAPP_NUMBER,
-  to: TO_NUMBER,
+  from: WHATSAPP_SENDER_ID,
+  to: MESSAGES_TO_NUMBER,
   **message
 )
