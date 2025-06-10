@@ -3,16 +3,15 @@ require 'dotenv/load'
 require 'vonage'
 
 VONAGE_APPLICATION_ID = ENV['VONAGE_APPLICATION_ID']
-VONAGE_APPLICATION_PRIVATE_KEY_PATH = ENV['VONAGE_APPLICATION_PRIVATE_KEY_PATH']
-UUID = ENV['UUID']
+VONAGE_PRIVATE_KEY = ENV['VONAGE_PRIVATE_KEY']
+VOICE_CALL_ID = ENV['VOICE_CALL_ID']
+VOICE_NCCO_URL = ENV['VOICE_NCCO_URL']
 
 client = Vonage::Client.new(
   application_id: VONAGE_APPLICATION_ID,
-  private_key: File.read(VONAGE_APPLICATION_PRIVATE_KEY_PATH)
+  private_key: VONAGE_PRIVATE_KEY
 )
 
-ncco = {"type": "ncco", "url": ["https://raw.githubusercontent.com/nexmo-community/ncco-examples/gh-pages/transfer.json"]}
+ncco = {"type": "ncco", "url": [VOICE_NCCO_URL]}
 
-response = client.voice.transfer(UUID, destination: ncco)
-
-puts response.inspect
+response = client.voice.transfer(VOICE_CALL_ID, destination: ncco)

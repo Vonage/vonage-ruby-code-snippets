@@ -2,15 +2,13 @@ require 'dotenv/load'
 require 'vonage'
 
 VONAGE_APPLICATION_ID = ENV['VONAGE_APPLICATION_ID']
-VONAGE_APPLICATION_PRIVATE_KEY_PATH = ENV['VONAGE_APPLICATION_PRIVATE_KEY_PATH']
-UUID = ENV['UUID']
+VONAGE_PRIVATE_KEY = ENV['VONAGE_PRIVATE_KEY']
+VOICE_CALL_ID = ENV['VOICE_CALL_ID']
+VOICE_STREAM_URL = ENV['VOICE_STREAM_URL']
 
 client = Vonage::Client.new(
   application_id: VONAGE_APPLICATION_ID,
-  private_key: File.read(VONAGE_APPLICATION_PRIVATE_KEY_PATH)
+  private_key: VONAGE_PRIVATE_KEY
 )
     
-AUDIO_URL = 'https://nexmo-community.github.io/ncco-examples/assets/voice_api_audio_streaming.mp3'
-response = client.voice.stream.start(UUID, stream_url: [AUDIO_URL])
-
-puts response.inspect
+response = client.voice.stream.start(VOICE_CALL_ID, stream_url: [VOICE_STREAM_URL])

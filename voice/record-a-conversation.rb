@@ -2,6 +2,8 @@ require 'sinatra'
 require 'sinatra/multi_route'
 require 'json'
 
+VOICE_CONFERENCE_NAME = ENV['VOICE_CONFERENCE_NAME']
+
 before do
   content_type :json
 end
@@ -12,15 +14,13 @@ helpers do
   end
 end
 
-CONF_NAME = "record-a-conversation"
 
 route :get, :post, '/webhooks/answer' do
   [
     {
       action: "conversation",
-      name: CONF_NAME,
+      name: VOICE_CONFERENCE_NAME,
       record: "true",
-      #This currently needs to be set rather than default due to a known issue https://help.nexmo.com/hc/en-us/articles/360001162687
       eventMethod: "POST", 
       eventUrl: ["#{request.base_url}/webhooks/recordings"]
     }
