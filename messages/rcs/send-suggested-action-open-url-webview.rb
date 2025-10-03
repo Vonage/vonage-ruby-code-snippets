@@ -13,13 +13,16 @@ client = Vonage::Client.new(
 
 message = client.messaging.rcs(
   type: 'text',
-  message: "Your driver will come and meet you at your specified location.",
+  message: "Check out our latest offers!",
   opts: {
     suggestions: [
       {
-        type: "share_location",
-        text: "Share a location",
-        postback_data: "postback_data_1234"
+        type: "open_url_in_webview",
+        text: "Open product page",
+        postback_data: "postback_data_1234",
+        url: "https://www.example.com/",
+        description: "A URL for the Example website",
+        view_mode: "FULL"
       }
     ]
   }

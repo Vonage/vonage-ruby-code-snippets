@@ -12,23 +12,18 @@ client = Vonage::Client.new(
 )
 
 message = client.messaging.rcs(
-  type: 'custom',
-  message: {
-    contentMessage: {
-      text: "Call us to claim your free gift!",
-      suggestions: [
-        {
-          action: {
-            text: "Call now!",
-            postbackData: "postback_data_1234",
-            fallbackUrl: "https://www.example.com/contact/",
-            dialAction: {
-              phoneNumber: "+447900000000"
-            }
-          }
-        }
-      ]
-    }
+  type: 'text',
+  message: "Call us to claim your free gift!",
+  opts: {
+    suggestions: [
+      {
+        type: "dial",
+        text: "Call now!",
+        postback_data: "postback_data_1234",
+        phone_number: "+447900000000",
+        fallback_url: "https://www.example.com/contact/"
+      }
+    ]
   }
 )
 

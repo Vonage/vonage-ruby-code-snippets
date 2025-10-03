@@ -12,25 +12,21 @@ client = Vonage::Client.new(
 )
 
 message = client.messaging.rcs(
-  type: 'custom',
-  message: {
-    contentMessage: {
-      text: "What do you think of Vonage APIs?",
-      suggestions: [
-        {
-          reply: {
-            text: "Great!",
-            postbackData: "suggestion_1"
-          }
-        },
-        {
-          reply: {
-            text: "Awesome!",
-            postbackData: "suggestion_2"
-          }
-        }
-      ]
-    }
+  type: 'text',
+  message: "What do you think of Vonage APIs?",
+  opts: {
+    suggestions: [
+      {
+        type: "reply",
+        text: "Great!",
+        postback_data: "suggestion_1"
+      },
+      {
+        type: "reply",
+        text: "Awesome!",
+        postback_data: "suggestion_2"
+      }
+    ]
   }
 )
 

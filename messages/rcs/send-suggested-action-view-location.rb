@@ -12,27 +12,20 @@ client = Vonage::Client.new(
 )
 
 message = client.messaging.rcs(
-  type: 'custom',
-  message: {
-    contentMessage: {
-      text: "Drop by our office!",
-      suggestions: [
-        {
-          action: {
-            text: "View map",
-            postbackData: "postback_data_1234",
-            fallbackUrl: "https://www.google.com/maps/place/Vonage/@51.5230371,-0.0852492,15z",
-            viewLocationAction: {
-              latLong: {
-                latitude: 51.5230371,
-                longitude: -0.0852492
-              },
-              label: "Vonage London Office"
-            }
-          }
-        }
-      ]
-    }
+  type: 'text',
+  message: "Drop by our office!",
+  opts: {
+    suggestions: [
+      {
+        type: "view_location",
+        text: "View map",
+        postback_data: "postback_data_1234",
+        latitude: 51.5230371,
+        longitude: -0.0852492,
+        pin_label: "Vonage London Office",
+        fallback_url: "https://www.google.com/maps/place/Vonage/@51.5230371,-0.0852492,15z"
+      }
+    ]
   }
 )
 

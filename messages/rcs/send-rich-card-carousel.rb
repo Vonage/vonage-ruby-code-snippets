@@ -14,54 +14,46 @@ client = Vonage::Client.new(
 )
 
 message = client.messaging.rcs(
-  type: 'custom',
+  type: 'carousel',
   message: {
-    contentMessage: {
-      richCard: {
-        carouselCard: {
-          cardWidth: "MEDIUM",
-          cardContents: [
-            {
-              title: "Option 1: Photo",
-              description: "Do you prefer this photo?",
-              media: {
-                height: "MEDIUM",
-                contentInfo: {
-                  fileUrl: MESSAGES_IMAGE_URL,
-                  forceRefresh: false
-                }
-              },
-              suggestions: [
-                {
-                  reply: {
-                    text: "Option 1",
-                    postbackData: "card_1"
-                  }
-                }
-              ]
-            },
-            {
-              title: "Option 1: Video",
-              description: "Or this video?",
-              media: {
-                height: "MEDIUM",
-                contentInfo: {
-                  fileUrl: MESSAGES_VIDEO_URL,
-                  forceRefresh: false
-                }
-              },
-              suggestions: [
-                {
-                  reply: {
-                    text: "Option 2",
-                    postbackData: "card_2"
-                  }
-                }
-              ]
-            }
-          ]
-        }
+    cards: [
+      {
+        title: "Option 1: Photo",
+        text: "Do you prefer this photo?",
+        media_url: MESSAGES_IMAGE_URL,
+        media_height: "SHORT",
+        media_description: "Picture of a cat",
+        thumbnail_url: MESSAGES_IMAGE_URL,
+        media_force_refresh: false,
+        suggestions: [
+        {
+            type: "reply",
+            text: "Option 1",
+            postback_data: "card_1"
+          }
+        ]
+      },
+      {
+        title: "Option 2: Video",
+        text: "Or this video?",
+        media_url: MESSAGES_VIDEO_URL,
+        media_height: "SHORT",
+        media_description: "Video of a cat",
+        thumbnail_url: MESSAGES_IMAGE_URL,
+        media_force_refresh: false,
+        suggestions: [
+        {
+            type: "reply",
+            text: "Option 2",
+            postback_data: "card_2"
+          }
+        ]
       }
+    ]
+  },
+  opts: {
+    rcs: {
+      card_width: "SMALL"
     }
   }
 )
