@@ -12,32 +12,25 @@ client = Vonage::Client.new(
 )
 
 message = client.messaging.rcs(
-  type: 'custom',
-  message: {
-    contentMessage: {
-      text: "Need some help? Call us now or visit our website for more information.",
-      suggestions: [
-        {
-          action: {
-            text: "Call us",
-            postbackData: "postback_data_1234",
-            fallbackUrl: "https://www.example.com/contact/",
-            dialAction: {
-              phoneNumber: "+447900000000"
-            }
-          }
-        },
-        {
-          action: {
-            text: "Visit site",
-            postbackData: "postback_data_1234",
-            openUrlAction: {
-              url: "http://example.com/"
-            }
-          }
-        }
-      ]
-    }
+  type: 'text',
+  message: "Need some help? Call us now or visit our website for more information.",
+  opts: {
+    suggestions: [
+      {
+        type: "dial",
+        text: "Call us",
+        postback_data: "postback_data_1234",
+        phone_number: "+447900000000",
+        fallback_url: "https://www.example.com/contact/"
+      },
+      {
+        type: "open_url",
+        text: "Visit site",
+        postback_data: "postback_data_1234",
+        url: "https://www.example.com/",
+        description: "A URL for the Example website"
+      }
+    ]
   }
 )
 

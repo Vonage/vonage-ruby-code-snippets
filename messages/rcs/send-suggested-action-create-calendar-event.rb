@@ -12,26 +12,21 @@ client = Vonage::Client.new(
 )
 
 message = client.messaging.rcs(
-  type: 'custom',
-  message: {
-    contentMessage: {
-      text: "Product Launch: Save the date!",
-      suggestions: [
-        {
-          action: {
-            text: "Save to calendar",
-            postbackData: "postback_data_1234",
-            fallbackUrl: "https://www.google.com/calendar",
-            createCalendarEventAction: {
-              startTime: "2024-08-24T20:00:00Z",
-              endTime: "2024-08-24T22:00:00Z",
-              title: "Vonage API Product Launch",
-              description: "Event to demo a new and exciting Vonage API product"
-            }
-          }
-        }
-      ]
-    }
+  type: 'text',
+  message: "Product Launch: Save the date!",
+  opts: {
+    suggestions: [
+      {
+        type: "create_calendar_event",
+        text: "Save to calendar",
+        postback_data: "postback_data_1234",
+        start_time: "2024-08-24T20:00:00Z",
+        end_time: "2024-08-24T22:00:00Z",
+        title: "Vonage API Product Launch",
+        description: "Event to demo a new and exciting Vonage API product",
+        fallback_url: "https://www.google.com/calendar"
+      }
+    ]
   }
 )
 

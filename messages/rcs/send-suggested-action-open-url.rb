@@ -12,22 +12,18 @@ client = Vonage::Client.new(
 )
 
 message = client.messaging.rcs(
-  type: 'custom',
-  message: {
-    contentMessage: {
-      text: "Check out our latest offers!",
-      suggestions: [
-        {
-          action: {
-            text: "Open product page",
-            postbackData: "postback_data_1234",
-            openUrlAction: {
-              url: "http://example.com/"
-            }
-          }
-        }
-      ]
-    }
+  type: 'text',
+  message: "Check out our latest offers!",
+  opts: {
+    suggestions: [
+      {
+        type: "open_url",
+        text: "Open product page",
+        postback_data: "postback_data_1234",
+        url: "https://www.example.com/",
+        description: "A URL for the Example website"
+      }
+    ]
   }
 )
 

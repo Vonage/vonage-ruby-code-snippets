@@ -13,40 +13,32 @@ client = Vonage::Client.new(
 )
 
 message = client.messaging.rcs(
-  type: 'custom',
+  type: 'card',
   message: {
-    contentMessage: {
-      richCard: {
-        standaloneCard: {
-          thumbnailImageAlignment: "RIGHT",
-          cardOrientation: "VERTICAL",
-          cardContent: {
-            title: "Quick question",
-            description: "Do you like this picture?",
-            media: {
-              height: "TALL",
-              contentInfo: {
-                fileUrl: MESSAGES_IMAGE_URL,
-                forceRefresh: false
-              }
-            },
-            suggestions: [
-              {
-                reply: {
-                  text: "Yes",
-                  postbackData: "suggestion_1"
-                }
-              },
-              {
-                reply: {
-                  text: "I love it!",
-                  postbackData: "suggestion_2"
-                }
-              }
-            ]
-          }
-        }
+    title: "Quick question",
+    text: "Do you like this picture?",
+    media_url: MESSAGES_IMAGE_URL,
+    media_height: "SHORT",
+    media_description: "Picture of a cat",
+    thumbnail_url: MESSAGES_IMAGE_URL,
+    media_force_refresh: false,
+    suggestions: [
+     {
+        type: "reply",
+        text: "Yes",
+        postback_data: "suggestion_1"
+      },
+      {
+        type: "reply",
+        text: "I love it!",
+        postback_data: "suggestion_2"
       }
+    ]
+  },
+  opts: {
+    rcs: {
+      card_orientation: "HORIZONTAL",
+      image_alignment: "RIGHT"
     }
   }
 )

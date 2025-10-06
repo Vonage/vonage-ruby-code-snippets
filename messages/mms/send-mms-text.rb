@@ -3,7 +3,7 @@ require 'vonage'
 
 VONAGE_APPLICATION_ID = ENV['VONAGE_APPLICATION_ID']
 VONAGE_PRIVATE_KEY = ENV['VONAGE_PRIVATE_KEY']
-RCS_SENDER_ID = ENV['RCS_SENDER_ID']
+MMS_SENDER_ID = ENV['MMS_SENDER_ID']
 MESSAGES_TO_NUMBER = ENV['MESSAGES_TO_NUMBER']
 
 client = Vonage::Client.new(
@@ -11,22 +11,13 @@ client = Vonage::Client.new(
   private_key: VONAGE_PRIVATE_KEY
 )
 
-message = client.messaging.rcs(
+message = client.messaging.mms(
   type: 'text',
-  message: "Your driver will come and meet you at your specified location.",
-  opts: {
-    suggestions: [
-      {
-        type: "share_location",
-        text: "Share a location",
-        postback_data: "postback_data_1234"
-      }
-    ]
-  }
+  message: "This is an MMS text message sent via the Vonage Messages API."
 )
 
 client.messaging.send(
-  from: RCS_SENDER_ID,
+  from: MMS_SENDER_ID,
   to: MESSAGES_TO_NUMBER,
   **message
 )
