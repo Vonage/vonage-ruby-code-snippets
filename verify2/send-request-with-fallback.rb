@@ -5,7 +5,6 @@ VONAGE_APPLICATION_ID = ENV['VONAGE_APPLICATION_ID']
 VONAGE_PRIVATE_KEY = ENV['VONAGE_PRIVATE_KEY']
 VERIFY_BRAND_NAME = ENV['VERIFY_BRAND_NAME']
 VERIFY_NUMBER = ENV['VERIFY_NUMBER']
-VERIFY_TO_EMAIL = ENV['VERIFY_TO_EMAIL']
 
 client = Vonage::Client.new(
   application_id: VONAGE_APPLICATION_ID,
@@ -20,8 +19,12 @@ client.verify2.start_verification(
       to: VERIFY_NUMBER
     },
     {
-      channel: 'email',
-      to: VERIFY_TO_EMAIL
+      channel: 'sms',
+      to: VERIFY_NUMBER
+    },
+    {
+      channel: 'voice',
+      to: VERIFY_NUMBER
     }
   ]
 )
